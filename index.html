@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SPERMO</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+const images = document.querySelectorAll(".image-container img");
+
+images.forEach(img => {
+  img.addEventListener("click", () => {
+    window.location.href = img.parentNode.href;
+  });
+});
+
+</script>
+
+ <script>
+    function setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      var expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    function acceptCookies() {
+      setCookie("cookieConsent", "accepted", 365);
+      hideBanner();
+    }
+
+    function declineCookies() {
+      setCookie("cookieConsent", "declined", 365);
+      hideBanner();
+    }
+
+    function hideBanner() {
+      var banner = document.getElementById("cookie-banner");
+      banner.style.display = "none";
+    }
+
+    function showBanner() {
+      var banner = document.getElementById("cookie-banner");
+      banner.style.display = "block";
+    }
+
+    window.onload = function() {
+      if (getCookie("cookieConsent") == "accepted") {
+        hideBanner();
+      } else {
+        showBanner();
+      }
+    }
+  </script>
+
+    
+    <style>
+      
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  background-color: #252954;
+}
+
+.hidden {
+  display: none;
+}
+
+.landingpage {
+  margin: 0 auto;
+  padding: 0 80px;
+  position: relative;
+  max-width: 1100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #1F1D2B;
+}
+.landingpage::before {
+  content: "";
+  position: absolute;
+  width: 123px;
+  height: 123px;
+  left: 60%;
+  top: 138px;
+  filter: blur(90px);
+  background-color: #FB37FF;
+}
+.landingpage::after {
+  content: "";
+  position: absolute;
+  width: 123px;
+  height: 123px;
+  left: 80%;
+  top: 550px;
+  background-color: #18B2DE;
+  filter: blur(80px);
+}
+.landingpage .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  width: 100%;
+}
+.landingpage .box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 80px;
+}
+.landingpage .auction {
+  margin-top: 100px;
+}
+.landingpage .discover {
+  display: flex;
+  flex-direction: column;
+}
+.landingpage .footer {
+  margin: 50px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.landingpage .footer2 {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  border-top: 1px solid #F2F2F2;
+}
+
+.navbar .hamburgerlogowrap {
+  display: flex;
+  align-items: center;
+}
+.navbar .hamburger {
+  display: none;
+  color: #D7D7D7;
+  background-color: #1F1D2B;
+  border: none;
+  margin-right: 10px;
+}
+.navbar .createbtn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  width: 126px;
+  height: 45px;
+  color: #BCBCBC;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+}
+.navbar .createbtn.selectedbtn {
+  border: 1px solid #D7D7D7;
+  border-radius: 10px;
+}
+.navbar .navlogo {
+  height: 100%;
+  background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+}
+.navbar .navlink {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #BCBCBC;
+}
+.navbar .navlink.selectedlink {
+  background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 1.5px solid #9B51E0;
+}
+.navbar .navlink:not(:last-child) {
+  margin-right: 32px;
+}
+
+.box .infobox {
+  animation-name: leftslide;
+  animation-duration: 0.8s;
+  max-height: 500px;
+  max-width: 55%;
+  overflow: hidden;
+}
+.box .infobox-boldtext {
+  margin: 0;
+  font-family: Poppins;
+  color: #FFFFFF;
+  font-size: 65px;
+  font-weight: 600;
+  line-height: 60px;
+  letter-spacing: -2px;
+  text-align: left;
+}
+.box .infobox-slimtext {
+  margin: 24px 0;
+  font-family: Poppins;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+.box .infobox-btnwrapper {
+  display: flex;
+}
+.box .infobox-explorebtn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1F1D2B;
+  padding: 8px 38px;
+  border-radius: 16px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -1px;
+  color: #FFFFFF;
+}
+.box .infobox-createbtn {
+  cursor: pointer;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  padding: 8px 38px;
+  border: 1px solid #D7D7D7;
+  border-radius: 16px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -1px;
+  color: #FFFFFF;
+}
+.box .infobox .selected {
+  border: none;
+  background: linear-gradient(103.91deg, #9B51E0 21.01%, rgba(48, 129, 237, 0.8) 100%);
+}
+.box .display {
+  animation-name: rightslide;
+  animation-duration: 0.8s;
+  padding: 14px;
+  border: 1px solid;
+  background: linear-gradient(169.44deg, rgba(58, 129, 191, 0.08) 1.85%, rgba(65, 48, 90, 0.08) 98.72%);
+  border-radius: 35px;
+  max-height: 450px;
+  max-width: 50%;
+  overflow: hidden;
+}
+.box .display-nft {
+  object-fit: cover;
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+}
+.box .display .infowrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.box .display .info {
+  display: flex;
+  align-items: center;
+  font-family: "Poppins";
+  font-style: normal;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 12px;
+}
+.box .display .info p {
+  margin: 0;
+}
+.box .display .info-img {
+  object-fit: cover;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.box .display .info2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: "Poppins";
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+}
+.box .display .info2 p {
+  margin: 0;
+}
+.box .display .info2 .iconwrapper {
+  display: flex;
+  align-items: center;
+}
+.box .display .info2 .iconwrapper svg {
+  margin-right: 5px;
+}
+
+.auction .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 50px;
+}
+.auction .title .titlebold {
+  margin: 0;
+  font-family: "Poppins";
+  font-style: normal;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 72px;
+}
+.auction .title .titleslim {
+  margin: 0;
+  font-family: "Poppins";
+  font-style: normal;
+  color: #D7D7D7;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 36px;
+  letter-spacing: -1px;
+}
+.auction .nft {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+  justify-content: space-between;
+}
+
+.started {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.started-boldtext {
+  margin: 0;
+  align-self: center;
+  font-family: "Poppins";
+  font-style: normal;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 72px;
+}
+.started-slimtext {
+  margin: 0;
+  align-self: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 36px;
+  letter-spacing: 0.5px;
+  color: #E2E2E2;
+}
+.started-items {
+  padding: 60px 80px;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  justify-content: space-between;
+}
+.started-items:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  top: 80px;
+  filter: blur(80px);
+  background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+}
+.started-items .itemwrapper p {
+  width: 100px;
+  margin: 0;
+  margin-top: 10px;
+  text-align: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #FFFFFF;
+}
+.started-items-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 18px;
+  background-color: red;
+  background: rgba(255, 255, 255, 0.095);
+  box-shadow: inset 2.01px -2.01px 20px rgba(214, 214, 214, 0.17), inset -3.01333px 3.01333px 3.01333px rgba(255, 255, 255, 0.39);
+  backdrop-filter: blur(74.4293px);
+}
+
+.discover-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.discover-title p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  letter-spacing: -1px;
+  color: #FFFFFF;
+}
+.discover-items {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+  justify-content: space-between;
+}
+.discover-loadbtn {
+  cursor: pointer;
+  margin-top: 20px;
+  align-self: center;
+  width: 161px;
+  height: 40px;
+  border: 1px solid #D7D7D7;
+  border-radius: 10px;
+  background-color: transparent;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: #BCBCBC;
+}
+
+.footer-main {
+  max-width: 40%;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 40px;
+  color: #FFFFFF;
+}
+.footer-navigate {
+  display: flex;
+}
+.footer-navigate .nav {
+  margin-left: 60px;
+}
+.footer-navigate .nav h5 {
+  margin: 0;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+.footer-navigate .nav p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+  color: #D7D7D7;
+}
+
+.footer2 p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 36px;
+  color: #828282;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+}
+.item-img {
+  object-fit: cover;
+  flex-shrink: 0;
+  width: 200px;
+  height: 220px;
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.item-img:hover {
+  transform: scale(1.05);
+}
+.item-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+.item-date {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  color: #BCBCBC;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+}
+.filters .filter {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #FFFFFF;
+}
+.filters .filter svg {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.filters .filterbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+  border: none;
+  border-radius: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #FFFFFF;
+}
+.filters .filterbtn svg {
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 1500px) {
+  .landingpage {
+    max-width: 1200px;
+  }
+}
+@media screen and (max-width: 1040px) {
+  .box {
+    flex-direction: column;
+  }
+  .box .infobox {
+    max-height: 450px;
+    max-width: none;
+    margin-bottom: 50px;
+  }
+  .box .display {
+    display: none;
+    max-height: none;
+    max-width: none;
+  }
+
+  .auction .nft {
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+  }
+
+  .discover-items {
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+  .footer-main {
+    max-width: 80%;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .footer-navigate .nav:first-child {
+    margin: 0;
+  }
+}
+@media screen and (max-width: 925px) {
+  .navlinkwrap {
+    display: none;
+  }
+
+  .buttonwrap {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex !important;
+    align-items: center;
+  }
+
+  .started-slimtext {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 825px) {
+  .started-items {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-evenly;
+    padding: 50px 0;
+  }
+  .started-items:before {
+    height: 200px;
+    top: 90px;
+    filter: blur(120px);
+  }
+
+  .discover-items {
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+  }
+}
+@media screen and (max-width: 700px) {
+  .box {
+    flex-direction: column;
+  }
+  .box .infobox {
+    max-height: none;
+    max-width: none;
+    margin-bottom: 50px;
+  }
+  .box .display {
+    display: block;
+    max-height: none;
+    max-width: none;
+  }
+
+  .discover-title {
+    justify-content: center;
+  }
+  .discover-title .filters {
+    display: none;
+  }
+
+  .auction .title {
+    justify-content: center;
+  }
+  .auction .title .titleslim {
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .landingpage {
+    padding: 0 20px;
+  }
+
+  .box .infobox-boldtext {
+    font-size: 45px;
+    line-height: 50px;
+  }
+  .box .infobox-slimtext {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .discover-items {
+    grid-template-columns: auto;
+    justify-content: space-around;
+  }
+
+  .auction .nft {
+    grid-template-columns: auto;
+    justify-content: space-around;
+  }
+
+  .footer-main {
+    font-size: 20px;
+    line-height: 30px;
+    max-width: 100%;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .footer-navigate {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .footer-navigate .nav {
+    margin-left: 20px;
+  }
+  .footer-navigate .nav h5 {
+    font-size: 15px;
+    line-height: 30px;
+  }
+  .footer-navigate .nav p {
+    font-size: 10px;
+    line-height: 18px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .landingpage .box .infobox-boldtext {
+    font-size: 32px;
+    line-height: 1.4em;
+    text-align: center;
+  }
+  .landingpage .box .infobox-slimtext {
+    text-align: center;
+  }
+  .landingpage .box .infobox-btnwrapper {
+    justify-content: center;
+  }
+}
+@keyframes leftslide {
+  from {
+    transform: translateX(-700px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+@keyframes rightslide {
+  from {
+    transform: translateX(550px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+      
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #151922;
+  background: linear-gradient(to left, #151922, #6C5DD3);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #FFF;
+  height: 50px;
+  padding: 1em;
+z-index: 999; /* set a high z-index value */
+}
+.logo-container img {
+  width: 45px;
+  height: 45px;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container h2 {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > li {
+  margin: 0 1rem;
+  overflow: hidden;
+}
+
+.menu-button-container {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menu-button::before {
+  content: '';
+  margin-top: -8px;
+}
+
+.menu-button::after {
+  content: '';
+  margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+@media (max-width: 700px) {
+  .menu-button-container {
+    display: flex;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 50px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  #menu-toggle ~ .menu li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .menu li {
+    border: 1px solid #333;
+    height: 2.5em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .menu > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: white;
+    background-color: #222;
+  }
+  .menu > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
+}
+.metamask-logo {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-image: url('https://raw.githubusercontent.com/onchain123/onchain/main/metamask.png');
+    background-size: cover;
+  }
+  .chart-container {
+    text-align: center;
+   
+  }
+  .row {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+  .column {
+    flex: 1;
+    padding: 0 10px;
+  }
+  @media screen and (max-width: 1040px) {
+    .row {
+      flex-direction: column;
+    }
+    .column {
+      flex: none;
+      width: 100%;
+      padding: 0;
+    }
+  }
+.column {
+	width: 33.33%;
+	padding: 5px;
+	display: flex;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+		
+		.chart {
+			border: 2px solid #6C5DD3;
+			padding: 10px;
+			margin: 10px 0;
+		}
+		
+		.chart table {
+		  color:white;
+			border-collapse: collapse;
+			width: 100%;
+			
+			text-align: left;
+		}
+		
+.chart table th,
+.chart table td {
+  padding: 5px;
+  border: 2px solid #6C5DD3;
+}
+
+h2 {
+  color: white;
+}
+.question {
+  color:white;
+  margin-bottom: 10px;
+  border: 3px solid #6C5DD3;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+}
+
+.question h3 {
+  margin: 0;
+}
+
+.answer {
+  display: none;
+  margin-top: 10px;
+}
+
+.question.open .answer {
+  display: block;
+}
+
+.question::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 6px;
+  border-color: transparent transparent transparent #666;
+}
+#profile-img {
+    width:70px;
+    height:auto;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+   }
+  .button {
+    border: 2px solid #6C5DD3; /* add border to button */
+    padding: 5px; /* add padding to button */
+    border-radius: 5px; /* add border radius to button */
+    filter: brightness(100%);
+    transition: all 0.2s ease-in-out;
+    overflow: hidden;
+  }
+
+  .button:hover {
+    filter: brightness(150%);
+    transform: scale(1.1);
+  }
+
+  .button:hover img {
+    filter: invert(100%) brightness(100%);
+  }
+ 
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .social-icons img {
+      height: 25px;
+      width: auto;
+      margin: 0 2px;
+    }
+    .social-icons a {
+      filter: brightness(100%);
+      transition: all 0.2s ease-in-out;
+    }
+    .social-icons a:hover {
+      filter: brightness(150%);
+      transform: scale(1.1);
+    }
+    .social-icons a:hover img {
+      filter: invert(100%) brightness(100%);
+    }
+.partners {
+    display: inline-block;
+    position: relative;
+    margin: -10px;
+}
+
+.partners a {
+    display: block;
+}
+
+.partners img {
+    width: 150px;
+    height: auto;
+}
+
+.partners .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.partners:hover .overlay {
+    opacity: 1;
+}
+a {
+    color: pink;
+  }
+  .glow-border {
+    border: 1px solid #6C5DD3;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 50px #3a005e, 0 0 50px #000000, 0 0 50px #3a005e, 0 0 50px #000000, 0 0 50px #000000, 0 0 50px #000000, 0 0 50px #3a005e, 0 0 50px #000000;
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 2px #3a005e, 0 0 2px #3a005e, 0 0 2px #3a005e, 0 0 2px #3a005e, 0 0 2px #3a005e, 0 0 2px #3a005e, 0 0 2px #3a005e, 0 0 2px #3a005e;
+    }
+    to {
+      box-shadow: 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3;
+    }
+  }
+.add {
+            border: 1px solid #9B51E0;
+            padding: 10px;
+            font-family: Arial;
+            max-width: 800px;
+            overflow-x: auto;
+            margin: 50px auto;
+            text-align: left;
+            color: pink;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+            padding: 0;
+            
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #9B51E0;
+        }
+
+        th {
+            font-weight: bold;
+        }
+   h1 {
+     height: 100%;
+  background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+   }
+a {
+  text-decoration: none;
+}
+
+     
+    </style>
+  </head>
+  
+  
+  <body>
+<section class="top-nav">
+  <div>
+    <div class="logo-container">
+     <a href="./"> <img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230702_135707.png" alt="Your Logo"></a>
+      <h2>SWIFT Inu</h2>
+    </div>
+  </div>
+  <input id="menu-toggle" type="checkbox" />
+  <label class='menu-button-container' for="menu-toggle">
+    <div class='menu-button'></div>
+  </label>
+  <ul class="menu">
+    <li><a href="./">Home</a></li>
+    <li><a href="./">Roadmap</a></li>
+    <li><a href="./whitepaper" onclick="myFunction()">Whitepaper</a></li>
+
+    <li><a href="./" onclick="myFunction()">Support</a></li>
+    <li><a href="./" onclick="myFunction()">About</a></li>
+  </ul>
+</section>
+<h1>.🤖</h1>
+    
+    
+    <div class="landingpage">
+      <div class="navbar">
+        <a class="navlogo">SWIFT Inu</a>
+
+
+      </div>
+      <div class="box">
+        <div class="infobox">
+          <p class="infobox-boldtext">
+            Welcome to the world of SWIFT Inu, where innovation and opportunity intertwine to shape the future of decentralized finance.</p>
+          <p class="infobox-slimtext">
+            SWIFT Inu is an innovative cryptocurrency built on the Binance Smart Chain. This digital asset offers a comprehensive range of features including reflections, staking, and NFT mining capabilities. With its advanced technology and robust infrastructure, SWIFT Inu provides users with an efficient and secure platform to participate in the world of decentralized finance.🐯
+  </p>
+          <div class="infobox-btnwrapper">
+            <a href="./">
+            <button class="infobox-explorebtn selected">Roadmap</button></a>
+
+            <a href="./">
+            <button class="infobox-createbtn">Whitepaper</button></a>
+          </div>
+        </div>
+        <div class="display">
+          <img class="display-nft" src="https://raw.githubusercontent.com/onchain123/onchain/main/20230702_144214.jpg" alt="unsplash-OG44d93i-NJk" border="0">
+          <div class="infowrapper">
+            <div class="info">
+              <img class="info-img" src="https://raw.githubusercontent.com/onchain123/onchain/main/SWIFT%20logo.png" alt="unsplash-OG44d93i-NJk" border="0">
+              <div>
+                <p>SWIFT Inu</p>
+
+              </div>
+      </div>
+            <div class="info2">
+              <p>Not Your Ordinary Coin</p>
+              <div class="iconwrapper">
+                <svg width="22" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.7365 2C3.6575 2 1.5 3.8804 1.5 6.5135c0 3.1074 2.3236 5.9603 4.8612 8.1207 1.2458 1.0606 2.4954 1.9137 3.4352 2.5022.4692.2937.8593.5203 1.1305.6727L11 17.85l.0731-.0409a27.984 27.984 0 0 0 1.1304-.6727c.9399-.5885 2.1895-1.4416 3.4353-2.5022C18.1764 12.4738 20.5 9.6209 20.5 6.5135 20.5 3.8805 18.3425 2 16.2635 2c-2.1054 0-3.8008 1.389-4.552 3.6426a.75.75 0 0 1-1.423 0C9.5373 3.389 7.8418 2 5.7365 2ZM11 18.7027l.3426.6672a.7502.7502 0 0 1-.6852 0L11 18.7027ZM0 6.5135C0 3.052 2.829.5 5.7365.5 8.0298.5 9.8808 1.7262 11 3.6048 12.1192 1.7262 13.9702.5 16.2635.5 19.171.5 22 3.052 22 6.5135c0 3.8183-2.8014 7.06-5.3888 9.2628-1.3167 1.121-2.6296 2.0166-3.6116 2.6314-.4918.308-.9025.5467-1.1918.7092a19.142 19.142 0 0 1-.4301.2347l-.0248.013-.007.0036-.0021.0011c-.0003.0001-.0012.0006-.3438-.6666-.3426.6672-.3424.6673-.3426.6672l-.0033-.0017-.007-.0036-.0248-.013a19.142 19.142 0 0 1-.4301-.2347 29.324 29.324 0 0 1-1.1918-.7092c-.982-.6148-2.295-1.5104-3.6116-2.6314C2.8014 13.5735 0 10.3318 0 6.5135Z" fill="#E0E0E0"/>
+      </svg>
+                1M
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2>
+        🐯
+      </h2>
+      <div class="box">
+        <div class="infobox">
+          <p class="infobox-boldtext">
+            What is SWIFT Inu?🐯</p>
+          <p class="infobox-slimtext">
+            SWIFT Inu distinguishes itself as a unique Meme coin, providing holders with a distinctive set of features including Reflections, staking, and NFT mining.</p>
+            <p class="infobox-slimtext">By implementing Reflections, SWIFT Inu rewards holders with additional tokens for each transaction, fostering a sense of community and incentivizing long-term ownership.</p>
+             <p class="infobox-slimtext">Additionally, the staking functionality enables users to lock their SWIFT Inu tokens, earning passive income in the form of interest.</p>
+            <p class="infobox-slimtext">Furthermore, SWIFT Inu pioneers NFT Miner, allowing holders to engage in the exciting world of non-fungible tokens and potentially unlock exclusive digital assets.</p>
+             <p class="infobox-slimtext">With its exceptional blend of amusement and financial opportunities, SWIFT Inu stands out among meme coins, providing holders with an immersive experience in the world of cryptocurrencies.</p>
+          </div>
+          </div>
+          <h2>🐯</h2>
+
+      <div class="box">
+        <div class="infobox">
+          <p class="infobox-boldtext">
+            🐯 NFT Miner 🐯
+            </p>
+            <p>
+          <p class="infobox-slimtext">
+           SWIFT Inu revolutionizes NFT mining by simplifying the process. Unlike traditional NFT mining with dapps, SWIFT NFT Mining is as straightforward as holding NFTs on Metamask or Trust Wallet.</p>
+             <p class="infobox-slimtext">Tokens are automatically minted and sent directly to the NFT owners' wallets, eliminating the need for manual claiming. This innovative approach ensures a seamless and hassle-free experience for holders, enabling them to effortlessly benefit from their NFT ownership.
+            </p>
+            </p>
+            
+        <div class="display">
+          <img class="display-nft" src="https://raw.githubusercontent.com/onchain123/onchain/main/ezgif-2-622b7fc2b5.gif" alt="unsplash-OG44d93i-NJk" border="0">
+          <div class="infowrapper">
+            <div class="info">
+              <img class="info-img" src="https://raw.githubusercontent.com/onchain123/onchain/main/SWIFT%20logo.png" alt="unsplash-OG44d93i-NJk" border="0">
+              <div>
+                <p>NFT Miner</p>
+
+              </div>
+      </div>
+            <div class="info2">
+              <p>Tokens directly on Metamask</p>
+              <div class="iconwrapper">
+                <svg width="22" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.7365 2C3.6575 2 1.5 3.8804 1.5 6.5135c0 3.1074 2.3236 5.9603 4.8612 8.1207 1.2458 1.0606 2.4954 1.9137 3.4352 2.5022.4692.2937.8593.5203 1.1305.6727L11 17.85l.0731-.0409a27.984 27.984 0 0 0 1.1304-.6727c.9399-.5885 2.1895-1.4416 3.4353-2.5022C18.1764 12.4738 20.5 9.6209 20.5 6.5135 20.5 3.8805 18.3425 2 16.2635 2c-2.1054 0-3.8008 1.389-4.552 3.6426a.75.75 0 0 1-1.423 0C9.5373 3.389 7.8418 2 5.7365 2ZM11 18.7027l.3426.6672a.7502.7502 0 0 1-.6852 0L11 18.7027ZM0 6.5135C0 3.052 2.829.5 5.7365.5 8.0298.5 9.8808 1.7262 11 3.6048 12.1192 1.7262 13.9702.5 16.2635.5 19.171.5 22 3.052 22 6.5135c0 3.8183-2.8014 7.06-5.3888 9.2628-1.3167 1.121-2.6296 2.0166-3.6116 2.6314-.4918.308-.9025.5467-1.1918.7092a19.142 19.142 0 0 1-.4301.2347l-.0248.013-.007.0036-.0021.0011c-.0003.0001-.0012.0006-.3438-.6666-.3426.6672-.3424.6673-.3426.6672l-.0033-.0017-.007-.0036-.0248-.013a19.142 19.142 0 0 1-.4301-.2347 29.324 29.324 0 0 1-1.1918-.7092c-.982-.6148-2.295-1.5104-3.6116-2.6314C2.8014 13.5735 0 10.3318 0 6.5135Z" fill="#E0E0E0"/>
+      </svg>
+                1M
+              </div>
+            </div>
+          </div>
+        </div>
+            
+            </div>
+            </div>
+            
+   <div class="box">
+        <div class="infobox">
+          <div class="infobox-btnwrapper">
+            <a href="https://pancakeswap.finance/swap?outputCurrency=0xAB3CE6Ecfb25Bc1022Ed46e2A3897234fe339ed3">
+            <button class="infobox-explorebtn selected">🐯Buy $WSF</button></a>
+            <a href="./">
+            <button class="infobox-createbtn">🐯 Buy NFT</button></a>
+
+            </div>
+            </div>
+            </div>
+            
+   <div class="box">
+        <div class="infobox">
+          <div class="infobox-btnwrapper">
+<div style="display: flex; justify-content: center;">
+  <a href="./">
+    <button class="infobox-explorebtn selected">
+      <span class="metamask-logo"></span>
+      Add to Metamask
+    </button>
+  </a>
+</div>
+</div>  
+</div>
+<div class="infobox">
+          <div class="infobox-btnwrapper">
+
+            <a href="./">
+            <button class="infobox-createbtn">Explore NFTs</button></a>
+
+            </div>
+            </div>
+      </div>
+      <div class="auction">
+        <div class="title">
+          <p class="titlebold">NFT Miners🐯</p>
+          <a href="./"><p class="titleslim">View all</p></a>
+        </div>
+        <div class="nft">
+          <div class=item>
+            <a href="./">
+            <img class="item-img" src="https://raw.githubusercontent.com/onchain123/onchain/main/20230702_170918.jpg" alt="unsplash-OG44d93i-NJk" border="0"></a>
+            <div class="item-title">
+              <p>NFT Miner #1</p>
+              <p>Coming Soon</p>
+            </div>
+            <p class="item-date">Buy Now</p>
+          </div>
+          <div class=item>
+            <a href="./">
+            <img class="item-img" src="https://raw.githubusercontent.com/onchain123/onchain/main/20230702_170918.jpg" alt="unsplash-OG44d93i-NJk" border="0"></a>
+            <div class="item-title">
+              <p>NFT Miner #2</p>
+              <p>Coming Soon</p>
+            </div>
+            <p class="item-date">Buy Now</p>
+          </div>
+          <div class=item>
+            <a href="./">
+            <img class="item-img" src="https://raw.githubusercontent.com/onchain123/onchain/main/20230702_170918.jpg" border="0"></a>
+            <div class="item-title">
+              <p>NFT Miner #3</p>
+              <p>Coming Soon</p>
+            </div>
+            <p class="item-date">Buy Now</p>
+          </div>
+          <div class=item>
+            <a href="./">
+            <img class="item-img" src="https://raw.githubusercontent.com/onchain123/onchain/main/20230702_170918.jpg" alt="unsplash-OG44d93i-NJk" border="0"></a>
+            <div class="item-title">
+              <p>NFT Miner #4</p>
+              <p>Coming Soon</p>
+            </div>
+            <p class="item-date">Buy Now</p>
+          </div>
+        </div>
+      </div>
+
+<div class="#">
+  <div class="#">
+    <div class="add">
+      <div class="chart">
+        <h2>Tokenomics</h2>
+        <table>
+          <tr>
+            <th>Token Name</th>
+            <td>SWIFT Inu</td>
+          </tr>
+          <tr>
+            <th>Token Symbol</th>
+            <td>SWF</td>
+          </tr>
+          <tr>
+            <th>Total Supply</th>
+            <td>100 Million</td>
+          </tr>
+          <tr>
+            <th>Blockchain</th>
+            <td>BSC</td>
+          </tr>
+             <tr>
+            <th>Contract Address</th>
+            <td>Coming Soon</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="add">
+      <div class="chart">
+        <h2>Token Allocation</h2>
+        <table>
+          <tr>
+            <th>Liquidity Pool</th>
+            <td>Liquidity is Locked</td>
+          </tr>
+          <tr>
+            <th>Reserves/Expansion</th>
+            <td>15 Million (15%)</td>
+          </tr>
+          <tr>
+            <th>Community Incentives</th>
+            <td>15 Million (15%)</td>
+          </tr>
+          <tr>
+            <th>Marketing</th>
+            <td>10 Million (10%)</td>
+          </tr>
+          <tr>
+            <th>Development</th>
+            <td>20 Million (20%)</td>
+          </tr>
+          
+          <tr>
+            <th>Liquidity</th>
+            <td>40 Million (40%)</td>
+          </tr>
+          <tr>
+            <th>TOTAL</th>
+            <td>100 Million (100%)</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="started">
+
+  <p class="started-boldtext">
+  ___________FAQS___________
+  </p>
+  </div>
+  <p>
+    
+  </p>
+  <p>
+    
+  </p>
+<div class="question">
+  <h3>What is SWIFT Inu?</h3>
+  <div class="answer">
+    <p style="font-weight: bold; color: #6C5DD3;">
+      SWIFT Inu is an innovative Crypto project that aims to provide passive income through Reflections,Staking and NFT Miner.</p>
+  </div>
+</div>
+
+<div class="question">
+  <h3> What is Reflections?</h3>
+  <div class="answer">
+<p style="font-weight: bold; color: #6C5DD3;">
+In SWIFT Inu, reflections are when you get rewarded with more tokens just for holding $SWF. It's like getting a bonus for keeping your SWIFT Inu, without having to do anything else.
+    </p>
+  </div>
+</div>
+<div class="question">
+  <h3> What is Staking?</h3>
+  <div class="answer">
+<p style="font-weight: bold; color: #6C5DD3;">
+Staking SWIFT Inu means locking up or holding your $SWF in a specific wallet to support the network's operations. By doing so, you earn rewards or interest in the form of additional tokens. It's a way to contribute to the security and functionality of the network while earning passive income.
+    </p>
+  </div>
+</div>
+<div class="question">
+  <h3> What is NFT Miner?</h3>
+  <div class="answer">
+<p style="font-weight: bold; color: #6C5DD3;">
+NFT Miner is not actually a miner, rather the NFTs are use for distributing new minted tokens to all NFT holders.
+And in SWIFT Inu, NFT Miner is actually minting new tokens and distribute it automatically without the need of claiming.
+    </p>
+  </div>
+</div>
+  
+<div class="question">
+  <h3>Can I get SWIFT Inu for Free?</h3>
+  <div class="answer">
+<p style="font-weight: bold; color: #6C5DD3;">
+  Yes! Simply Participate on every events of SWIFT Inu.</p>
+  </div>
+</div>
+
+<div class="question">
+  <h3>Is SWIFT Inu a Meme Coin?</h3>
+  <div class="answer">
+<p style="font-weight: bold; color: #6C5DD3;">
+  Yes! However SWIFT Inu is the only Meme Coin that offers Reflections,Staking and NFT Mining.</p>
+  </div>
+</div>
+<div class="question">
+  <h3>How to Mine Tokens With NFT Mining?</h3>
+  <div class="answer">
+<p style="font-weight: bold; color: #6C5DD3;">Mining Tokens with NFT Mining of SWIFT Inu is never been this easy!
+To start earning tokens with NFT Mining, All you need to do is hold the NFT on your either Metamask or Trust Wallet and the tokens will be minted and sent directly on your wallet..
+  </p>
+  </div>
+</div>
+
+<div class="question">
+  <h3>Do i have to claim the tokens from NFT Mining?</h3>
+  <div class="answer">
+<p style="font-weight: bold; color: #6C5DD3;">
+  No! After holding the NFT on your wallet the tokens are automatocally minted everyday and sent directly on your wallet.. No need for claiming.</p>
+  </div>
+</div>
+
+
+      <div class="started">
+        <p class="started-boldtext">Why is SWIFT Inu different and better from other Meme coins?</p>
+        <p class="started-slimtext">SWIFT Inu stands out from other meme coins due to its distinctive features and community-driven approach. It offers reflections, staking, and an NFT Miner, providing additional incentives and rewards to token holders. Moreover, SWIFT Inu is decentralized, transparent, and governed by its community. This creates an engaging ecosystem that promotes active participation and value creation.</p>
+        <div class="started-items">
+          <div class="itemwrapper">
+            <div class="started-items-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+                <path style="stroke:none;fill-rule:nonzero;fill:#e0e0e0;fill-opacity:1" d="M24.7969 14.6719c.4375-.4414.4375-1.1524 0-1.5938-.4414-.4375-1.1524-.4375-1.5938 0L16.5 19.7851l-2.9531-2.957c-.4414-.4375-1.1524-.4375-1.5938 0-.4375.4414-.4375 1.1524 0 1.5938l3.75 3.75a1.1246 1.1246 0 0 0 1.5938 0Zm0 0"/>
+                <path style="stroke:none;fill-rule:evenodd;fill:#e0e0e0;fill-opacity:1" d="M18.8086.957a2.6005 2.6005 0 0 0-1.6172 0L4.8164 4.9688C3.7344 5.3202 3 6.3241 3 7.4648V15c0 9.2852 5.6563 16.0586 14.1016 19.246a2.5853 2.5853 0 0 0 1.7968 0C27.3438 31.0587 33 24.2853 33 15V7.4648a2.6182 2.6182 0 0 0-1.8164-2.496Zm-.9219 2.1368a.3738.3738 0 0 1 .2266 0l12.375 4.0117c.1601.0547.2617.1992.2617.3593V15c0 8.1914-4.9219 14.2227-12.6445 17.1367a.2815.2815 0 0 1-.211 0C10.172 29.2227 5.25 23.1914 5.25 15V7.4648c0-.1601.1016-.3046.2617-.3593Zm0 0"/>
+              </svg>
+    </div>
+            <p>Secure and Immutable</p>
+          </div>
+          <div class="itemwrapper">
+            <div class="started-items-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+        <path style="stroke:none;fill-rule:evenodd;fill:#bdbdbd;fill-opacity:1" d="M4.125 3C2.6758 3 1.5 4.1758 1.5 5.625v5.25c0 1.4492 1.1758 2.625 2.625 2.625h27.75c1.4492 0 2.625-1.1758 2.625-2.625v-5.25C34.5 4.1758 33.3242 3 31.875 3Zm27.75 2.25H4.125c-.207 0-.375.168-.375.375v5.25c0 .207.168.375.375.375h27.75c.207 0 .375-.168.375-.375v-5.25c0-.207-.168-.375-.375-.375Zm0 0"/>
+        <path style="stroke:none;fill-rule:nonzero;fill:#bdbdbd;fill-opacity:1" d="M4.125 15c.621 0 1.125.504 1.125 1.125v14.25c0 .207.168.375.375.375h24.75c.207 0 .375-.168.375-.375v-14.25c0-.621.504-1.125 1.125-1.125S33 15.504 33 16.125v14.25C33 31.8242 31.8242 33 30.375 33H5.625C4.1758 33 3 31.8242 3 30.375v-14.25C3 15.504 3.504 15 4.125 15Zm0 0"/>
+        <path style="stroke:none;fill-rule:nonzero;fill:#bdbdbd;fill-opacity:1" d="M14.625 17.25c-.621 0-1.125.504-1.125 1.125s.504 1.125 1.125 1.125h6.75c.621 0 1.125-.504 1.125-1.125s-.504-1.125-1.125-1.125Zm0 0"/>
+      </svg>
+            </div>
+            <p>Supported by multiple wallets</p>
+          </div>
+          <div class="itemwrapper">
+            <div class="started-items-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="px" viewBox="0 0 36 31">
+        <path style="stroke:none;fill-rule:evenodd;fill:#bdbdbd;fill-opacity:1" d="M2.832 2.9219c-.2148 0-.3867.1758-.3867.3906v24.375c0 .2148.1719.3906.3867.3906h4.9453l13.332-14.1875c1.0548-1.121 2.8165-1.1445 3.8985-.0508l8.5469 8.6407V3.3125c0-.2148-.1719-.3906-.3867-.3906Zm30.336 27.5156H2.832c-1.5039 0-2.7226-1.2305-2.7226-2.75V3.3125c0-1.5195 1.2187-2.75 2.7226-2.75h30.336c1.5039 0 2.7226 1.2305 2.7226 2.75v24.375c0 1.5195-1.2187 2.75-2.7226 2.75ZM22.8008 15.5156 10.996 28.0781H33.168c.2148 0 .3867-.1758.3867-.3906v-1.871L23.3594 15.5077a.388.388 0 0 0-.5586.0078Zm-9.4688-4.3398c0 1.5195-1.2187 2.75-2.7226 2.75-1.5 0-2.7188-1.2305-2.7188-2.75 0-1.5196 1.2188-2.75 2.7188-2.75 1.5039 0 2.7226 1.2304 2.7226 2.75Zm2.336 0c0 2.8242-2.2657 5.1094-5.0586 5.1094-2.789 0-5.0547-2.2852-5.0547-5.1094s2.2656-5.1094 5.0547-5.1094c2.793 0 5.0586 2.2852 5.0586 5.1094Zm0 0"/>
+      </svg>
+            </div>
+            <p>The NFT Miners generate Tokens directly on wallet.</p>
+          </div>
+          <div class="itemwrapper">
+            <div class="started-items-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+        <path style="stroke:none;fill-rule:evenodd;fill:#bdbdbd;fill-opacity:1" d="M30.9453.5a16.7245 16.7245 0 0 0-11.4687 4.5508l-2.0274 1.914a35.9135 35.9135 0 0 0-2.3984 2.4805h-7.836c-.957 0-1.8437.5-2.3359 1.3203L.668 17.7891c-.1952.3242-.2226.7226-.0702 1.0664.1523.3476.4609.5976.828.6758l7.1134 1.496c.0586.0782.125.1485.1992.2188l3.1054 2.914 2.9102 3.1016c.0703.0742.1406.1406.2188.1992l1.496 7.1133c.0782.3672.3282.6758.6758.8281a1.158 1.158 0 0 0 1.0664-.0703l7.0235-4.211a2.7222 2.7222 0 0 0 1.3203-2.3358v-7.836a36.8748 36.8748 0 0 0 2.4844-2.3984l1.9101-2.0274A16.7411 16.7411 0 0 0 35.5 5.0508l-.004-1.8281C35.496 1.7187 34.2774.5 32.7774.5Zm-6.7226 22.3398a39.89 39.89 0 0 1-1.582 1.1172l-5.2813 3.5196 1.0547 5.0156 5.621-3.3711c.1172-.0703.1876-.1992.1876-.336ZM8.5234 18.6406l3.5196-5.2812a34.8776 34.8776 0 0 1 1.1172-1.582H7.2148a.3952.3952 0 0 0-.3359.1913L3.508 17.586ZM21.0781 6.75a14.3862 14.3862 0 0 1 9.8672-3.918h1.832c.211 0 .3868.1758.3868.3907v1.828c0 3.672-1.3985 7.2032-3.9141 9.8712l-1.9102 2.0273a34.7388 34.7388 0 0 1-5.996 5.0664l-5.1133 3.4102-2.711-2.8906c-.0195-.0157-.0351-.0352-.0547-.0508l-2.8906-2.7149 3.4102-5.1172c1.457-2.1796 3.1523-4.1914 5.0625-5.9921Zm5.4766 5.0273c0 1.2891-1.043 2.332-2.332 2.332-1.2891 0-2.332-1.0429-2.332-2.332 0-1.289 1.0429-2.332 2.332-2.332 1.289 0 2.332 1.043 2.332 2.332ZM9.4453 32c1.3985-1.3984 1.3985-4.043 0-5.4453-1.4023-1.3985-4.0469-1.3985-5.4453 0-1.879 1.8828-2.246 6.0703-2.3164 7.3789a.3609.3609 0 0 0 .3828.3828C3.375 34.2461 7.5625 33.879 9.4454 32Zm0 0"/>
+      </svg>
+            </div>
+            <p>Low Market Cap</p>
+          </div>
+        </div>
+      </div>
+
+        <div class="discover-items">
+     
+  
+  
+	<h2 >Automated Smart Contract Audit
+	</h2></div>
+<div style="text-align:center;">
+<div class="partners">
+    <a href="https://www.cyberscope.io">
+        <img src="https://raw.githubusercontent.com/onchain123/onchain/main/cyberscope.jpg" alt="your image description" class="glow-border">
+        <div class="overlay">
+        </div>
+    </a>
+</div>
+</div>
+<div class="footer-main">
+	<h2 >Echosystem
+	</h2></div>
+<div style="text-align:center;">
+<div class="partners">
+    <a href="./">
+        <img src="https://raw.githubusercontent.com/onchain123/onchain/main/2560px-Binance_logo.svg.png" alt="your image description" class="glow-border">
+        <div class="overlay">
+        </div>
+    </a>
+</div>
+<p>
+  
+</p>
+<div class="partners">
+    <a href="./">
+        <img src="https://raw.githubusercontent.com/Onchainsperm/onchain/main/logo.png" alt="your image description" class="glow-border">
+        <div class="overlay">
+        </div>
+    </a>
+</div>
+<p>
+  
+  
+</p>
+<div class="partners">
+    <a href="./">
+        <img src="https://raw.githubusercontent.com/onchain123/onchain/main/opensea.jpg" alt="your image description" class="glow-border">
+        <div class="overlay">
+        </div>
+    </a>
+</div>
+</div>
+        
+<div class="footer-main">
+         <h2> Team</h2></div>
+<div style="text-align:center;">
+  <img id="profile-img" src="https://raw.githubusercontent.com/onchain123/onchain/main/FB_IMG_16883008892942981.jpg" width="150" height="auto">
+<div style="display: flex; justify-content: center;">
+  <a href="https://twitter.com/InvestXploree Twitter ng IX">
+    <img src="https://raw.githubusercontent.com/onchain123/onchain/main/twitter.png" alt="Twitter logo" width="32" height="32">
+  </a>
+  
+</div>
+<p style="font-weight: bold; color:gray;">
+ InvestXplore</p>
+
+<p style="font-weight: bold; color:  #6C5DD3;">
+  Creator</p>
+<p style="font-weight: bold; color:  #6C5DD3;">
+  Developer</p>
+
+		</div>
+
+
+<div style="text-align:center;">
+  <img id="profile-img" src="https://raw.githubusercontent.com/onchain123/onchain/main/20230702_135707.png" width="150" height="auto">
+<div style="display: flex; justify-content: center;">
+  <a href="./">
+    <img src="https://raw.githubusercontent.com/onchain123/onchain/main/twitter.png" alt="Twitter logo" width="32" height="32">
+  </a>
+  
+</div>
+<p style="font-weight: bold; color: gray;">
+ Odin</p>
+<p style="font-weight: bold; color:  #6C5DD3;">
+  Marketing Head</p>
+
+		</div>
+
+	<div style="text-align:center;">
+  <h2>YOU CAN FIND US ON</h2>
+</div>
+<div style="text-align:center;">
+
+<div class="social-icons">
+  
+  <a href="https://twitter.com/SwiftInuu" target="_blank">
+    <div class="button">
+      <img src="https://raw.githubusercontent.com/onchain123/onchain/main/twitter.png" alt="Twitter" />
+    </div>
+  </a>
+
+<a href="https://t.me/SwiftInu" target="_blank">
+    <div class="button">
+      <img src="https://raw.githubusercontent.com/onchain123/onchain/main/telegram.jpg" alt="Telegram" />
+    </div>
+  </a>
+</div>
+</div>
+	<div style="text-align:center;">
+<p style="font-weight: bold; color: pink;">
+  Get Support</p>
+
+<a href="./"><p
+style="font-weight: bold; color: blue;">Click Here</p></a>
+</div>
+
+         
+         
+        <div class="footer-navigate">
+          <div class="nav">
+            <h5>Marketplace</h5>
+            <a href="./"><p>Opensea</p></a>
+            <a href="./"><p>PancakeSwap</p>
+            </a>
+          </div>
+          <div class="nav">
+            <h5>Creator</h5>
+            <a href="./" ><p>About Us</p></a>
+
+          </div>
+          <div class="nav">
+            <h5>Socials</h5>
+
+            <a href="https://twitter.com/onchainsperms?t=rG0KyVwdG_Spq9ADrpO1VQ&s=09"
+            ><p>Twitter</p></a>
+            <a href="./">
+            <p>Email</p></a>
+          </div>
+
+        </div>
+      </div>
+
+
+      </div>
+    </div>
+    
+    
+    
+<script>
+const questions = document.querySelectorAll('.question');
+
+questions.forEach(function(question) {
+  const questionHeader = question.querySelector('h3');
+  questionHeader.addEventListener('click', function() {
+    console.log('Question clicked!');
+    question.classList.toggle('open');
+  });
+});
+
+
+</script>
+<script>
+function myFunction() {
+  // do something when the link is clicked
+}
+</script>
+<!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+<script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({"notice_banner_type":"headline","consent_type":"express","palette":"dark","language":"en","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"ONCHAIN SPERM"});
+});
+</script>
+
+<!-- ONCHAIN SPERM -->
+  <script type="text/plain" data-cookie-consent="functionality">
+    function setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      var expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    function acceptCookies() {
+      setCookie("cookieConsent", "accepted", 365);
+      hideBanner();
+    }
+
+    function declineCookies() {
+      setCookie("cookieConsent", "declined", 365);
+      hideBanner();
+    }
+
+    function hideBanner() {
+      var banner = document.getElementById("cookie-banner");
+      banner.style.display = "none";
+    }
+
+    function showBanner() {
+      var banner = document.getElementById("cookie-banner");
+      banner.style.display = "block";
+    }
+
+    window.onload = function() {
+      if (getCookie("cookieConsent") == "accepted") {
+        hideBanner();
+      } else {
+        showBanner();
+      }
+    }
+  </script>
+<!-- end of ONCHAIN SPERM-->
+
+<noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+<!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+
+
+
+
+
+<!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
+
+
+
+  <div id="cookie-banner">
+    <p>This website uses cookies to improve your experience. By clicking "Accept", you consent to the use of cookies.</p>
+    <button onclick="acceptCookies()">Accept</button>
+    <button onclick="declineCookies()">Decline</button>
+  </div>
+
+</div>
+
+  </body>
+</html>
