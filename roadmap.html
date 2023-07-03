@@ -269,9 +269,10 @@ font-family: Arial,Sans-Serif;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 10px;
     }
     .social-icons img {
-      height: 25px;
+      height: 50px;
       width: auto;
       margin: 0 2px;
     }
@@ -416,7 +417,17 @@ a {
       box-shadow: 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3;
     }
   }
-    
+.slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.slide-up.slide-up-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
     
     
     
@@ -448,25 +459,9 @@ a {
 	<div style="text-align:center;">
 <img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230703_150158.png"width="300px" height="auto"class="image-style">
 </div>
-<div style="text-align:center;">
 
-<div class="social-icons">
-  
-  <a href="https://twitter.com/SwiftInuu" target="_blank">
-    <div class="button">
-      <img src="https://raw.githubusercontent.com/onchain123/onchain/main/twitter.png" alt="Twitter" />
-    </div>
-  </a>
 
-<a href="https://t.me/SwiftInu" target="_blank">
-    <div class="button">
-      <img src="https://raw.githubusercontent.com/onchain123/onchain/main/telegram.jpg" alt="Telegram" />
-    </div>
-  </a>
-</div>
-</div>
-<h3>Here is a rough sketch of SWIFT Inu path ahead. We dont wan’t to give everything away on day 1, Expect surprises along the way</h3>
-  <section id="home">
+  <section id="home" class="slide-up">
   <h1>Roadmap</h1>
 
   <div class="roadmap">
@@ -513,6 +508,27 @@ a {
     </div>
   </div>
 </section>
+<div style="text-align:center;">
+
+<div class="social-icons">
+  
+  <a href="https://twitter.com/SwiftInuu" target="_blank">
+    <div class="button">
+      <img src="https://raw.githubusercontent.com/onchain123/onchain/main/twitter.png" alt="Twitter" />
+    </div>
+  </a>
+
+<a href="https://t.me/SwiftInu" target="_blank">
+    <div class="button">
+      <img src="https://raw.githubusercontent.com/onchain123/onchain/main/telegram.jpg" alt="Telegram" />
+    </div>
+  </a>
+</div>
+</div>
+
+<h3>Here is a rough sketch of SWIFT Inu path ahead. We dont wan’t to give everything away on day 1, Expect surprises along the way</h3>
+<h1>⚠️</h1>
+<h1>Cryptocurrency may be unregulated in your jurisdiction. The value of cryptocurrencies may go down as well as up. Profits may be subject to capital gains or other taxes applicable in your jurisdiction.</h1>
 	<h2 >Automated Smart Contract Audit
 	</h2></div>
 <div style="text-align:center;">
@@ -562,6 +578,36 @@ a {
   <h2></h2>
 </div>
 
+<script>
+function isElementInViewport(element) {
+  var rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 ||
+    (window.innerHeight - rect.top) >= 0
+  );
+}
+
+function addSlideUpAnimation() {
+  var sectionElements = document.getElementsByClassName('slide-up');
+  for (var i = 0; i < sectionElements.length; i++) {
+    var sectionElement = sectionElements[i];
+    if (isElementInViewport(sectionElement)) {
+      sectionElement.classList.add('slide-up-active');
+    }
+  }
+}
+
+// Trigger the slide-up animation on page load
+document.addEventListener('DOMContentLoaded', function() {
+  addSlideUpAnimation();
+});
+
+// Trigger the slide-up animation on scroll
+window.addEventListener('scroll', function() {
+  addSlideUpAnimation();
+});
+
+</script>
   <script>
     const roadmap = document.querySelector('.roadmap');
     roadmap.addEventListener('wheel', (e) => {
