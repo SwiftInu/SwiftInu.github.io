@@ -78,7 +78,7 @@ images.forEach(img => {
 body {
   font-family: Arial, sans-serif;
   font-size: 14px;
-  margin: 0;
+  margin: 12px;
   background-color: #252954;
 }
 
@@ -94,6 +94,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   background-color: #1F1D2B;
+  border-radius: 30px;
 }
 .landingpage::before {
   content: "";
@@ -177,7 +178,7 @@ body {
 }
 .navbar .navlogo {
   height: 100%;
-  background: linear-gradient(93.51deg, #ff9900 2.84%, #3081ED 99.18%);
+  background: linear-gradient(93.51deg, #ff9900 2.84%, #ff9900 99.18%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Poppins";
@@ -787,7 +788,7 @@ body {
   background: linear-gradient(to left, #151922, #6C5DD3);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #FFF;
-  height: 50px;
+  height: 30px;
   padding: 1em;
 z-index: 999; /* set a high z-index value */
 }
@@ -1148,6 +1149,27 @@ a {
 a {
   text-decoration: none;
 }
+  .image-style {
+    animation: floating 3s ease-in-out infinite;
+  }
+@keyframes floating {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+section {
+    background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
 
      
     </style>
@@ -1171,19 +1193,23 @@ a {
     <li><a href="./roadmap">Roadmap</a></li>
     <li><a href="./" onclick="myFunction()">Whitepaper</a></li>
 
-    <li><a href="./" onclick="myFunction()">Support</a></li>
-    <li><a href="./" onclick="myFunction()">About</a></li>
+    <li><a href="./support" onclick="myFunction()">Support</a></li>
+    <li><a href="./about" onclick="myFunction()">About</a></li>
   </ul>
 </section>
-<h1>🐯</h1>
-    
-    
-    <div class="landingpage">
+<h1></h1>
       <div class="navbar">
         <a class="navlogo">SWIFT Inu</a>
 
 
       </div>
+	<div style="text-align:center;">
+<img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230703_184743.png"width="300px" height="auto"class="image-style">
+</div>
+
+    
+    <div class="landingpage">
+
       <div class="box">
         <div class="infobox">
           <p class="infobox-boldtext">
@@ -1595,7 +1621,7 @@ To start earning tokens with NFT Mining, All you need to do is hold the NFT on y
 <div class="footer-main">
          <h2> Team</h2></div>
 <div style="text-align:center;">
-  <img id="profile-img" src="https://raw.githubusercontent.com/onchain123/onchain/main/FB_IMG_16883008892942981.jpg" width="150" height="auto">
+  <img id="profile-img" src="https://raw.githubusercontent.com/onchain123/onchain/main/20230702_135707.png" width="150" height="auto">
 <div style="display: flex; justify-content: center;">
   <a href="https://twitter.com/InvestXploree Twitter ng IX">
     <img src="https://raw.githubusercontent.com/onchain123/onchain/main/twitter.png" alt="Twitter logo" width="32" height="32">
@@ -1603,7 +1629,7 @@ To start earning tokens with NFT Mining, All you need to do is hold the NFT on y
   
 </div>
 <p style="font-weight: bold; color:gray;">
- InvestXplore</p>
+ Swift Inu</p>
 
 <p style="font-weight: bold; color:  #6C5DD3;">
   Creator</p>
@@ -1614,7 +1640,7 @@ To start earning tokens with NFT Mining, All you need to do is hold the NFT on y
 
 
 <div style="text-align:center;">
-  <img id="profile-img" src="https://raw.githubusercontent.com/onchain123/onchain/main/20230702_135707.png" width="150" height="auto">
+  <img id="profile-img" src="https://raw.githubusercontent.com/onchain123/onchain/main/FB_IMG_16883008892942981.jpg" width="150" height="auto">
 <div style="display: flex; justify-content: center;">
   <a href="./">
     <img src="https://raw.githubusercontent.com/onchain123/onchain/main/twitter.png" alt="Twitter logo" width="32" height="32">
