@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About SWIFT Inu</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+  <style>
+   body {
+   font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: white;
+    margin: 20px;
+    background-color: #252954;
+  }
+    .roadmap {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      white-space: nowrap;
+    }
+    .phase {
+      margin-right: 20px;
+      min-width: 300px; /* Adjust as needed */
+    }
+    .title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .task {
+      margin-left: 20px;
+       text-align: left;
+      font-weight: bold;
+    }
+    a {
+  text-decoration: none;
+  color: #ff9900;
+    }
+    h1{
+     text-align: center;
+     font-size: 30px;
+     color: white;
+    }
+    h2{
+     text-align: center;
+     font-size: 30px;
+     color: #ff9900;
+    }
+    h3{
+     text-align: center;
+     font-size: 20px;
+     color: #ff9900;
+    }
+    h4{
+     text-align: center;
+     font-size: 20px;
+     color: white;
+    }
+   p{
+     text-align: center;
+     font-size: 15px;
+     color: white;
+    }
+    #home {
+     text-align: center;
+     }
+   section {
+    background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+    padding: 10px;
+    border-radius: 0 30px 0 30px;
+    margin: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  #my-section {
+    background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+    padding: 10px;
+    border-radius: 0px;
+    margin: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+.navbar .hamburgerlogowrap {
+  display: flex;
+  align-items: center;
+}
+.navbar .hamburger {
+  display: none;
+  color: #D7D7D7;
+  background-color: #1F1D2B;
+  border: none;
+  margin-right: 10px;
+}
+.navbar .createbtn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  width: 126px;
+  height: 45px;
+  color: #BCBCBC;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+}
+.navbar .createbtn.selectedbtn {
+  border: 1px solid #D7D7D7;
+  border-radius: 10px;
+}
+.navbar .navlogo {
+  height: 100%;
+  background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+}
+.navbar .navlink {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #BCBCBC;
+}
+.navbar .navlink.selectedlink {
+  background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 1.5px solid #9B51E0;
+}
+.navbar .navlink:not(:last-child) {
+  margin-right: 32px;
+}
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #151922;
+  background: linear-gradient(to left, #151922, #6C5DD3);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #045454;
+  height: 30px;
+  padding: 1em;
+z-index: 999; /* set a high z-index value */
+}
+.logo-container img {
+  width: 45px;
+  height: 45px;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container h2 {
+  margin-left: 10px;
+  font-size: 20px;
+}
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > li {
+  margin: 0 1rem;
+  overflow: hidden;
+}
+
+.menu-button-container {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: #ff9900;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menu-button::before {
+  content: '';
+  margin-top: -8px;
+}
+
+.menu-button::after {
+  content: '';
+  margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+@media (max-width: 700px) {
+  .menu-button-container {
+    display: flex;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 50px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  #menu-toggle ~ .menu li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .menu li {
+    border: 1px solid #333;
+    height: 2.5em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .menu > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: white;
+    background-color: #222;
+  }
+  .menu > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
+}
+  .image-style {
+    animation: floating 3s ease-in-out infinite;
+  }
+@keyframes floating {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+.pogi-criptotradeir {
+font-family: Arial,Sans-Serif;
+  font-size: 24px;
+  color: #ff9900;
+  text-align: center;
+}
+ .social-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+    }
+    .social-icons img {
+      height: 50px;
+      width: auto;
+      margin: 0 2px;
+    }
+    .social-icons a {
+      filter: brightness(100%);
+      transition: all 0.2s ease-in-out;
+    }
+    .social-icons a:hover {
+      filter: brightness(150%);
+      transform: scale(1.1);
+    }
+    .social-icons a:hover img {
+      filter: invert(100%) brightness(100%);
+    }
+  .button {
+    border: 2px solid #6C5DD3; /* add border to button */
+    padding: 0px; /* add padding to button */
+    border-radius: 40px; /* add border radius to button */
+    filter: brightness(100%);
+    transition: all 0.2s ease-in-out;
+    overflow: hidden;
+  }
+
+  .button:hover {
+    filter: brightness(150%);
+    transform: scale(1.1);
+  }
+
+  .button:hover img {
+    filter: invert(100%) brightness(100%);
+  }
+  .footer-main {
+    font-size: 20px;
+    line-height: 30px;
+    max-width: 100%;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .footer-navigate {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .footer-navigate .nav {
+    margin-left: 20px;
+  }
+  .footer-navigate .nav h5 {
+    font-size: 15px;
+    line-height: 30px;
+  }
+  .footer-navigate .nav p {
+    font-size: 10px;
+    line-height: 18px;
+  }
+.footer-main {
+  max-width: 40%;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 40px;
+  color: #FFFFFF;
+}
+.footer-navigate {
+  display: flex;
+}
+.footer-navigate .nav {
+  margin-left: 60px;
+}
+.footer-navigate .nav h5 {
+  margin: 0;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+.footer-navigate .nav p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+  color: #D7D7D7;
+}
+
+.footer2 p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 36px;
+  color: #828282;
+}
+.partners {
+    display: inline-block;
+    position: relative;
+    margin: -10px;
+}
+
+.partners a {
+    display: block;
+}
+
+.partners img {
+    width: 150px;
+    height: auto;
+}
+
+.partners .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.partners:hover .overlay {
+    opacity: 1;
+}
+a {
+    color: #ff9900;
+  }
+  .glow-border {
+    border: 1px solid #6C5DD3;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 50px #3a005e, 0 0 50px #000000, 0 0 50px #3a005e, 0 0 50px #000000, 0 0 50px #000000, 0 0 50px #000000, 0 0 50px #3a005e, 0 0 50px #000000;
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 2px #3a005e, 0 0 2px #3a005e, 0 0 2px #3a005e, 0 0 2px #3a005e, 0 0 2px #3a005e, 0 0 2px #3a005e, 0 0 2px #3a005e, 0 0 2px #3a005e;
+    }
+    to {
+      box-shadow: 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3, 0 0 2px #6C5DD3;
+    }
+  }
+.slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.slide-up.slide-up-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.landingpage {
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  max-width: 1100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #1F1D2B;
+  border-radius: 30px;
+}
+.image-container {
+  text-align: center;
+  justify-content: center;
+}
+
+.image-container .image-wrapper {
+  
+  padding: 2px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+
+  border: 2px solid silver;
+  border-radius: 10px;
+  background-color: silver;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .image-container img {
+    max-width: 50%;
+  }
+}
+
+
+
+
+    
+    
+  </style>
+</head>
+<body>
+<section id="my-section" class="top-nav">
+  <div>
+    <div class="logo-container">
+     <a href="./"> <img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230702_135707.png" alt="Your Logo"></a>
+      <h2>SWIFT Inu</h2>
+    </div>
+  </div>
+  <input id="menu-toggle" type="checkbox" />
+  <label class='menu-button-container' for="menu-toggle">
+    <div class='menu-button'></div>
+  </label>
+  <ul class="menu">
+    <li><a href="./">Home</a></li>
+    <li><a href="./roadmap">Roadmap</a></li>
+    <li><a href="./whitepaper" onclick="myFunction()">Whitepaper</a></li>
+
+    <li><a href="./support" onclick="myFunction()">Support</a></li>
+    <li><a href="#home" onclick="myFunction()">About</a></li>
+  </ul>
+</section>
+<h1>🔻</h1>
+<h1></h1>
+<h1></h1>
+	<div style="text-align:center;">
+<img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230704_135910.png"width="300px" height="auto"class="image-style">
+</div>
+<div class="landingpage">
+
+<h1></h1>
+  <section id="home" class="slide-up">
+  <h1>About SWIFT Inu</h1>
+
+  <div class="roadmap">
+    <div class="phase">
+      <h2 class="title">Decentralized</h2>
+      <ul>
+        <li class="task">Contract is Renounced. </li>
+        <li class="task">LP is Locked for 100 Years </li>
+        <li class="task">Decentralized Application </li>
+        
+
+      </ul>
+    </div>
+
+    <div class="phase">
+      <h2 class="title">Security</h2>
+      <ul>
+        <li class="task">Launch on BSC</li>
+        <li class="task">Immutable Contract</li>
+        <li class="task">No trust issue</li>
+        <li class="task">Transparent</li>
+      </ul>
+    </div>
+
+    <div class="phase">
+      <h2 class="title">Team Details</h2>
+      <ul>
+        <li class="task">Team is anonymous</li>
+        <li class="task">Don't need to trust the team</li>
+        <li class="task">Experience Team and Experties</li>
+
+      </ul>
+    </div>
+    
+    <div class="phase">
+      <h2 class="title">Attention!</h2>
+      <ul>
+        <li class="task">Trust no one!</li>
+        <li class="task">SWIFT is transparent</li>
+        <li class="task">Always DYOR!</li>
+        <li class="task">Only Believe your own judgement!</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center;">
+
+<div class="social-icons">
+  
+  <a href="https://twitter.com/SwiftInuu" target="_blank">
+    <div class="button">
+      <img src="https://raw.githubusercontent.com/onchain123/onchain/main/twitter.png" alt="Twitter" / class="slide-up">
+    </div>
+  </a>
+
+<a href="https://t.me/SwiftInu" target="_blank">
+    <div class="button">
+      <img src="https://raw.githubusercontent.com/onchain123/onchain/main/telegram.jpg" alt="Telegram" / class="slide-up">
+    </div>
+  </a>
+</div>
+</div>
+
+<h2 class="slide-up">Introducing SWIFT Inu: The Future of Meme Coins</h2>
+<h3 class="slide-up">
+SWIFT Inu is the only meme coin offering reflection, staking, and NFT mining. It's a community-driven projecf created by experienced crypto enthusiasts. </h3>
+
+<div class="image-container">
+  <div class="image-wrapper">
+<img src="https://raw.githubusercontent.com/onchain123/onchain/main/ezgif-3-8a6c6175fc.gif"width="100%" height="auto" class="slide-up">
+</div>
+</div>
+<h4 class="slide-up">About SWIFT</h4>
+<p class="slide-up">
+SWIFT Inu is a decentralized meme coin that operates on the Binance Smart Chain, designed to provide passive income opportunities while maintaining decentralization. Our visionary team conceived the idea of a coin that combines the benefits of decentralization with the ability to generate passive income through reflections, staking, and an innovative NFT Mining feature. SWIFT Inu stands out as a meme coin that offers both security and the potential for passive income. It operates under the principles of community governance and ownership, empowering our community to shape the future of SWIFT Inu.
+</p>
+<p class="slide-up">
+Our project does not rely on lofty promises; instead, we place our emphasis on delivering results through a clear and well-defined <a href="./roadmap">roadmap</a>.</p>
+<h4 class="slide-up">About Team</h4>
+<p class="slide-up">SWIFT Inu is a community-driven and decentralized token, operated by an anonymous team. We believe that the true power lies in the collective efforts of our community, making the identity of the creators irrelevant. To ensure transparency and trust, the contract has been renounced, and the liquidity is locked for an extensive period of 100 years. While our team remains dedicated to managing and supporting SWIFT Inu, our ultimate goal is to achieve remarkable success through widespread adoption and make our dream a reality.</p>
+<p class="slide-up">
+In the world of crypto,You don't have to trust developers and creators instead trust yourself and embrace decentralization and transparency. SWIFT Inu values individual decision-making and the core principles of the industry.
+</p>
+<section class="slide-up">
+      <img src="https://raw.githubusercontent.com/Onchainsperm/onchain/main/shpvf0bke008rvno1kvpto8bhi-75cfd99eb8ecaef8a24ac82e744dbca3.png" width="100%" height="auto" class="image-style">
+</section>
+
+
+<h1 class="slide-up">⚠️</h1>
+<h1 class="slide-up">Cryptocurrency may be unregulated in your jurisdiction. The value of cryptocurrencies may go down as well as up. Profits may be subject to capital gains or other taxes applicable in your jurisdiction.</h1>
+	<h2 class="slide-up">Automated Smart Contract Audit
+	</h2>
+<div style="text-align:center;">
+<div class="partners">
+    <a href="https://www.cyberscope.io">
+        <img src="https://raw.githubusercontent.com/onchain123/onchain/main/cyberscope.jpg" alt="your image description" class="glow-border">
+        <div class="overlay">
+        </div>
+    </a>
+</div>
+</div>
+
+	<h2 class="slide-up">Echosystem
+	</h2>
+<div style="text-align:center;">
+<div class="partners">
+    <a href="./">
+        <img src="https://raw.githubusercontent.com/onchain123/onchain/main/2560px-Binance_logo.svg.png" alt="your image description" class="glow-border">
+        <div class="overlay">
+        </div>
+    </a>
+</div>
+<p>
+  
+</p>
+<div class="partners">
+    <a href="./">
+        <img src="https://raw.githubusercontent.com/Onchainsperm/onchain/main/logo.png" alt="your image description" class="glow-border">
+        <div class="overlay">
+        </div>
+    </a>
+</div>
+<p>
+  
+  
+</p>
+<div class="partners">
+    <a href="./">
+        <img src="https://raw.githubusercontent.com/onchain123/onchain/main/opensea.jpg" alt="your image description" class="glow-border">
+        <div class="overlay">
+        </div>
+    </a>
+</div>
+</div>
+<h1></h1>
+</div>
+
+	<div style="text-align:center;">
+  <h2></h2>
+</div>
+
+<script>
+function isElementInViewport(element) {
+  var rect = element.getBoundingClientRect();
+  var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+  // Check if the element is within the viewport vertically and horizontally
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= windowHeight &&
+    rect.right <= windowWidth
+  );
+}
+
+function addSlideUpAnimation() {
+  var sectionElements = document.getElementsByClassName('slide-up');
+  for (var i = 0; i < sectionElements.length; i++) {
+    var sectionElement = sectionElements[i];
+    if (isElementInViewport(sectionElement)) {
+      sectionElement.classList.add('slide-up-active');
+    }
+  }
+}
+
+// Trigger the slide-up animation on page load
+document.addEventListener('DOMContentLoaded', function() {
+  addSlideUpAnimation();
+});
+
+// Trigger the slide-up animation on scroll
+window.addEventListener('scroll', function() {
+  addSlideUpAnimation();
+});
+
+// Trigger the slide-up animation on window resize
+window.addEventListener('resize', function() {
+  addSlideUpAnimation();
+});
+</script>
+
+  <script>
+    const roadmap = document.querySelector('.roadmap');
+    roadmap.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      roadmap.scrollLeft += e.deltaY;
+    });
+  </script>
+  <script src="script.js"></script> 
+  <script>
+const slides = document.querySelectorAll(".slides img");
+let currentIndex = 0;
+
+function showSlides() {
+  slides[currentIndex].classList.add("slide-hidden");
+  currentIndex = (currentIndex + 1) % slides.length;
+  slides[currentIndex].classList.remove("slide-hidden");
+}
+
+setInterval(showSlides, 1000); // Change image every 3 seconds (adjust as needed)
+
+  </script>
+<div style="display: flex; justify-content: center;">
+  <p style="font-size: 8px;" class="pogi-criptotradeir">⚠️DISCLAIMER: SWIFT Inu is not a financial institution nor investment.SWIFT Inu is a decentralized token owned by the community and run by the community..
+  Investing in crypto is very highrisk which can lead to losses. invest at your own risk! </p>
+  </div>
+<div style="display: flex; justify-content: center;">
+  <p style="font-size: 8px;" class="pogi-criptotradeir">&copy; 2023 SWIFT Inu. All rights reserved.</p>
+  </div>
+</body>
+</html>
