@@ -57,6 +57,7 @@
     background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
     padding: 25px;
     border-radius: 5px;
+    margin: 10;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 .navbar .hamburgerlogowrap {
@@ -427,8 +428,17 @@ a {
   opacity: 1;
   transform: translateY(0);
 }
+.landingpage {
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  max-width: 1100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #1F1D2B;
+  border-radius: 30px;
+}
 
-    
     
     
   </style>
@@ -459,8 +469,8 @@ a {
 	<div style="text-align:center;">
 <img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230703_150158.png"width="300px" height="auto"class="image-style">
 </div>
-
-
+<div class="landingpage">
+<h1></h1>
   <section id="home" class="slide-up">
   <h1>Roadmap</h1>
 
@@ -530,7 +540,7 @@ a {
 <h1>⚠️</h1>
 <h1>Cryptocurrency may be unregulated in your jurisdiction. The value of cryptocurrencies may go down as well as up. Profits may be subject to capital gains or other taxes applicable in your jurisdiction.</h1>
 	<h2 >Automated Smart Contract Audit
-	</h2></div>
+	</h2>
 <div style="text-align:center;">
 <div class="partners">
     <a href="https://www.cyberscope.io">
@@ -573,6 +583,8 @@ a {
     </a>
 </div>
 </div>
+<h1></h1>
+</div>
 
 	<div style="text-align:center;">
   <h2></h2>
@@ -581,9 +593,15 @@ a {
 <script>
 function isElementInViewport(element) {
   var rect = element.getBoundingClientRect();
+  var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+  // Check if the element is within the viewport vertically and horizontally
   return (
-    rect.top >= 0 ||
-    (window.innerHeight - rect.top) >= 0
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= windowHeight &&
+    rect.right <= windowWidth
   );
 }
 
@@ -607,7 +625,12 @@ window.addEventListener('scroll', function() {
   addSlideUpAnimation();
 });
 
+// Trigger the slide-up animation on window resize
+window.addEventListener('resize', function() {
+  addSlideUpAnimation();
+});
 </script>
+
   <script>
     const roadmap = document.querySelector('.roadmap');
     roadmap.addEventListener('wheel', (e) => {
