@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Litepaper</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+  <style>
+   body {
+   font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: white;
+    margin: 10px;
+    background-color: #C0C0C0;
+  }
+    .roadmap {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      white-space: nowrap;
+    }
+    .phase {
+      margin-right: 20px;
+      min-width: 300px; /* Adjust as needed */
+    }
+    .title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .task {
+      margin-left: 20px;
+       text-align: left;
+      font-weight: bold;
+    }
+    a {
+  text-decoration: none;
+  color: #ff9900;
+    }
+    h1{
+     text-align: center;
+     font-size:40px;
+     color: black;
+     font-weight: bold;
+    }
+    h2{
+     text-align: left;
+     font-size: 40px;
+     color: black;
+     font-weight: bold;
+     margin: 40px;
+    }
+    h3{
+     text-align: center;
+     font-size: 20px;
+     color: #ff9900;
+    }
+    #home {
+     text-align: center;
+     }
+   section {
+    background: linear-gradient(93.51deg, #252954 2.84%, #252954 99.18%);
+    padding: 25px;
+    margin: 5px;
+    border-radius: 0 30px 0 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  #my-section {
+    background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+    padding: 10px;
+    border-radius: 0px;
+    margin: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+.navbar .hamburgerlogowrap {
+  display: flex;
+  align-items: center;
+}
+.navbar .hamburger {
+  display: none;
+  color: #D7D7D7;
+  background-color: #1F1D2B;
+  border: none;
+  margin-right: 10px;
+}
+.navbar .createbtn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  width: 126px;
+  height: 45px;
+  color: #BCBCBC;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+}
+.navbar .createbtn.selectedbtn {
+  border: 1px solid #D7D7D7;
+  border-radius: 10px;
+}
+.navbar .navlogo {
+  height: 100%;
+  background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+}
+.navbar .navlink {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #BCBCBC;
+}
+.navbar .navlink.selectedlink {
+  background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 1.5px solid #9B51E0;
+}
+.navbar .navlink:not(:last-child) {
+  margin-right: 32px;
+}
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #151922;
+  background: linear-gradient(to left, #151922, #6C5DD3);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #045454;
+  height: 30px;
+  padding: 1em;
+z-index: 999; /* set a high z-index value */
+}
+.logo-container img {
+  width: 45px;
+  height: 45px;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container h2 {
+  margin-left: 10px;
+  font-size: 20px;
+}
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > li {
+  margin: 0 1rem;
+  overflow: hidden;
+}
+
+.menu-button-container {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: #ff9900;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menu-button::before {
+  content: '';
+  margin-top: -8px;
+}
+
+.menu-button::after {
+  content: '';
+  margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+@media (max-width: 700px) {
+  .menu-button-container {
+    display: flex;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 50px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  #menu-toggle ~ .menu li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .menu li {
+    border: 1px solid #333;
+    height: 2.5em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .menu > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: white;
+    background-color: #222;
+  }
+  .menu > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
+}
+  .image-style {
+    animation: floating 3s ease-in-out infinite;
+  }
+@keyframes floating {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+.pogi-criptotradeir {
+font-family: Arial,Sans-Serif;
+  font-size: 24px;
+  color: #ff9900;
+  text-align: center;
+}
+ .social-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .social-icons img {
+      height: 50px;
+      width: auto;
+      margin: 0 2px;
+    }
+    .social-icons a {
+      filter: brightness(100%);
+      transition: all 0.2s ease-in-out;
+    }
+    .social-icons a:hover {
+      filter: brightness(150%);
+      transform: scale(1.1);
+    }
+    .social-icons a:hover img {
+      filter: invert(100%) brightness(100%);
+    }
+
+  .footer-main {
+    font-size: 20px;
+    line-height: 30px;
+    max-width: 100%;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .footer-navigate {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .footer-navigate .nav {
+    margin-left: 20px;
+  }
+  .footer-navigate .nav h5 {
+    font-size: 15px;
+    line-height: 30px;
+  }
+  .footer-navigate .nav p {
+    font-size: 10px;
+    line-height: 18px;
+  }
+.footer-main {
+  max-width: 40%;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 40px;
+  color: #FFFFFF;
+}
+.footer-navigate {
+  display: flex;
+}
+.footer-navigate .nav {
+  margin-left: 60px;
+}
+.footer-navigate .nav h5 {
+  margin: 0;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+.footer-navigate .nav p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+  color: #D7D7D7;
+}
+
+.footer2 p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 36px;
+  color: #828282;
+}
+.partners {
+    display: inline-block;
+    position: relative;
+    margin: -10px;
+}
+
+.partners a {
+    display: block;
+}
+
+.partners img {
+    width: 150px;
+    height: auto;
+}
+
+.partners .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.partners:hover .overlay {
+    opacity: 1;
+}
+a {
+    color: #ff9900;
+  }
+
+.landingpage {
+  margin: 0 auto;
+  margin-top: 60px;
+  padding: 0 15px;
+  position: relative;
+  max-width: 1100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: white;
+  border-radius: 0 30px 0 30px;
+}
+.slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.slide-up.slide-up-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.image-container {
+  text-align: right;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+}
+p{
+     text-align: left;
+     font-size: 22px;
+     color: black;
+     margin: 5px;
+     font-weight: bold;
+     
+    }
+.pogi-criptotradeir {
+font-family: Arial,Sans-Serif;
+  font-size: 24px;
+  color: black;
+  text-align: center;
+}
+    /*dito ang buttons para sa back and next dahil makakalimutin na ako babdahin koto lge*/
+    .button {
+      background-color: silver;
+      border: 2px solid black;
+      color: black;
+      padding: 6px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px;
+      border-radius: 4px;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 767px) {
+      .button-container {
+        text-align: center;
+      }
+      .button {
+        display: block;
+        margin: 5px auto;
+        width: 10%;
+      }
+    }
+
+    /* Desktop Styles */
+    @media (min-width: 768px) {
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+      }
+      .button {
+        width: 5%;
+      }
+    }
+
+
+
+
+    
+    
+    
+  </style>
+</head>
+<body>
+<section id="my-section" class="top-nav">
+  <div>
+    <div class="logo-container">
+     <a href="./"> <img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230702_135707.png" alt="Your Logo"></a>
+      <h2>SWIFT Inu</h2>
+    </div>
+  </div>
+  <input id="menu-toggle" type="checkbox" />
+  <label class='menu-button-container' for="menu-toggle">
+    <div class='menu-button'></div>
+  </label>
+  <ul class="menu">
+    <li><a href="./">Home</a></li>
+    <li><a href="./welcome">Welcome</a></li>
+    <li><a href="./abstract" onclick="myFunction()">Abstract</a></li>
+
+    <li><a href="./introduction" onclick="myFunction()">Introduction</a></li>
+    <li><a href="./keyfeatures" onclick="myFunction()">Key Features</a></li>
+    <li><a href="./tokenomics" onclick="myFunction()">Tokenomics</a></li>
+    <li><a href="./roadmapdev" onclick="myFunction()">Roadmap and Devs</a></li>
+    <li><a href="./conclusion" onclick="myFunction()">Conclusion</a></li>
+  </ul>
+</section>
+<h1></h1>
+<h1></h1>
+
+
+<h1></h1>
+<div class="landingpage">
+  <h1></h1>
+  <h2>Litepaper</h2>
+<p>SWIFT Inu - Revolutionizing Meme Coins through Advanced Functionality and Decentralization
+</p>
+  
+
+
+  <div class="button-container">
+    <a href="./welcome" class="button">Back</a>
+    <a href="./abstract" class="button">Next</a>
+  </div>
+<h1></h1>
+</div>
+
+ 
+<script>
+function isElementInViewport(element) {
+  var rect = element.getBoundingClientRect();
+  var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+  // Check if the element is within the viewport vertically and horizontally
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= windowHeight &&
+    rect.right <= windowWidth
+  );
+}
+
+function addSlideUpAnimation() {
+  var sectionElements = document.getElementsByClassName('slide-up');
+  for (var i = 0; i < sectionElements.length; i++) {
+    var sectionElement = sectionElements[i];
+    if (isElementInViewport(sectionElement)) {
+      sectionElement.classList.add('slide-up-active');
+    }
+  }
+}
+
+// Trigger the slide-up animation on page load
+document.addEventListener('DOMContentLoaded', function() {
+  addSlideUpAnimation();
+});
+
+// Trigger the slide-up animation on scroll
+window.addEventListener('scroll', function() {
+  addSlideUpAnimation();
+});
+
+// Trigger the slide-up animation on window resize
+window.addEventListener('resize', function() {
+  addSlideUpAnimation();
+});
+</script>
+
+
+  <script>
+    const roadmap = document.querySelector('.roadmap');
+    roadmap.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      roadmap.scrollLeft += e.deltaY;
+    });
+  </script>
+  <script src="script.js"></script> 
+  <script>
+const slides = document.querySelectorAll(".slides img");
+let currentIndex = 0;
+
+function showSlides() {
+  slides[currentIndex].classList.add("slide-hidden");
+  currentIndex = (currentIndex + 1) % slides.length;
+  slides[currentIndex].classList.remove("slide-hidden");
+}
+
+setInterval(showSlides, 1000); // Change image every 3 seconds (adjust as needed)
+
+  </script>
+<div style="display: flex; justify-content: center;">
+  <p style="font-size: 8px;" class="pogi-criptotradeir">⚠️DISCLAIMER: SWIFT Inu is not a financial institution nor investment.SWIFT Inu is a decentralized token owned by the community and run by the community..
+  Investing in crypto is very highrisk which can lead to losses. invest at your own risk! </p>
+  </div>
+<div style="display: flex; justify-content: center;">
+  <p style="font-size: 8px;" class="pogi-criptotradeir">&copy; 2023 SWIFT Inu. All rights reserved.</p>
+  </div>
+</body>
+</html>
