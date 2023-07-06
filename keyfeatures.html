@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Key Features of SWIFT Inu</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <style>
+   body {
+   font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: white;
+    margin: 10px;
+    background-color: #C0C0C0;
+  }
+    .roadmap {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      white-space: nowrap;
+    }
+    .phase {
+      margin-right: 20px;
+      min-width: 300px; /* Adjust as needed */
+    }
+    .title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .task {
+      margin-left: 20px;
+       text-align: left;
+      font-weight: bold;
+    }
+    a {
+  text-decoration: none;
+  color: #ff9900;
+    }
+    h1{
+     text-align: left;
+     font-size:30px;
+     color: black;
+     font-weight: bold;
+     margin: 50;
+    }
+    h2{
+     text-align: left;
+     font-size: 40px;
+     color: black;
+     font-weight: bold;
+     margin: 40px;
+    }
+    h3{
+     text-align: center;
+     font-size: 20px;
+     color: black;
+    }
+    #home {
+     text-align: center;
+     }
+   section {
+    background: linear-gradient(93.51deg, #252954 2.84%, #252954 99.18%);
+    padding: 25px;
+    margin: 5px;
+    border-radius: 0 30px 0 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  #my-section {
+    background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+    padding: 10px;
+    border-radius: 0px;
+    margin: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+.navbar .hamburgerlogowrap {
+  display: flex;
+  align-items: center;
+}
+.navbar .hamburger {
+  display: none;
+  color: #D7D7D7;
+  background-color: #1F1D2B;
+  border: none;
+  margin-right: 10px;
+}
+.navbar .createbtn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  width: 126px;
+  height: 45px;
+  color: #BCBCBC;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+}
+.navbar .createbtn.selectedbtn {
+  border: 1px solid #D7D7D7;
+  border-radius: 10px;
+}
+.navbar .navlogo {
+  height: 100%;
+  background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+}
+.navbar .navlink {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #BCBCBC;
+}
+.navbar .navlink.selectedlink {
+  background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 1.5px solid #9B51E0;
+}
+.navbar .navlink:not(:last-child) {
+  margin-right: 32px;
+}
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #151922;
+  background: linear-gradient(to left, #151922, #6C5DD3);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #045454;
+  height: 30px;
+  padding: 1em;
+z-index: 999; /* set a high z-index value */
+}
+.logo-container img {
+  width: 45px;
+  height: 45px;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container h2 {
+  margin-left: 10px;
+  font-size: 20px;
+}
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > li {
+  margin: 0 1rem;
+  overflow: hidden;
+}
+
+.menu-button-container {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: #ff9900;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menu-button::before {
+  content: '';
+  margin-top: -8px;
+}
+
+.menu-button::after {
+  content: '';
+  margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+@media (max-width: 700px) {
+  .menu-button-container {
+    display: flex;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 50px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  #menu-toggle ~ .menu li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .menu li {
+    border: 1px solid #333;
+    height: 2.5em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .menu > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: white;
+    background-color: #222;
+  }
+  .menu > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
+}
+  .image-style {
+    animation: floating 3s ease-in-out infinite;
+  }
+@keyframes floating {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+.pogi-criptotradeir {
+font-family: Arial,Sans-Serif;
+  font-size: 24px;
+  color: #ff9900;
+  text-align: center;
+}
+ .social-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .social-icons img {
+      height: 50px;
+      width: auto;
+      margin: 0 2px;
+    }
+    .social-icons a {
+      filter: brightness(100%);
+      transition: all 0.2s ease-in-out;
+    }
+    .social-icons a:hover {
+      filter: brightness(150%);
+      transform: scale(1.1);
+    }
+    .social-icons a:hover img {
+      filter: invert(100%) brightness(100%);
+    }
+
+  .footer-main {
+    font-size: 20px;
+    line-height: 30px;
+    max-width: 100%;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .footer-navigate {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .footer-navigate .nav {
+    margin-left: 20px;
+  }
+  .footer-navigate .nav h5 {
+    font-size: 15px;
+    line-height: 30px;
+  }
+  .footer-navigate .nav p {
+    font-size: 10px;
+    line-height: 18px;
+  }
+.footer-main {
+  max-width: 40%;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 40px;
+  color: #FFFFFF;
+}
+.footer-navigate {
+  display: flex;
+}
+.footer-navigate .nav {
+  margin-left: 60px;
+}
+.footer-navigate .nav h5 {
+  margin: 0;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+.footer-navigate .nav p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+  color: #D7D7D7;
+}
+
+.footer2 p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 36px;
+  color: #828282;
+}
+.partners {
+    display: inline-block;
+    position: relative;
+    margin: -10px;
+}
+
+.partners a {
+    display: block;
+}
+
+.partners img {
+    width: 150px;
+    height: auto;
+}
+
+.partners .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.partners:hover .overlay {
+    opacity: 1;
+}
+a {
+    color: #ff9900;
+  }
+
+.landingpage {
+  margin: 0 auto;
+  margin-top: 60px;
+  padding: 0 15px;
+  position: relative;
+  max-width: 1100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: white;
+  border-radius: 0 30px 0 30px;
+}
+.slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.slide-up.slide-up-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.image-container {
+  text-align: center;
+  justify-content: center;
+}
+
+.image-container .image-wrapper {
+  
+  padding: 2px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+
+  border: 2px solid silver;
+  border-radius: 10px;
+  background-color: silver;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .image-container img {
+    max-width: 40%;
+  }
+}
+p{
+     text-align: left;
+     font-size: 16px;
+     color: black;
+     margin: 5px;
+    }
+p-sub{
+     text-align: center;
+     font-size: 16px;
+     color: black;
+     margin: 5px;
+     
+    }
+.pogi-criptotradeir {
+font-family: Arial,Sans-Serif;
+  font-size: 24px;
+  color: black;
+  text-align: center;
+}
+    /*dito ang buttons para sa back and next dahil makakalimutin na ako babdahin koto lge*/
+    .button {
+      background-color: silver;
+      border: 2px solid black;
+      color: black;
+      padding: 6px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px;
+      border-radius: 4px;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 767px) {
+      .button-container {
+        text-align: center;
+      }
+      .button {
+        display: block;
+        margin: 5px auto;
+        width: 10%;
+      }
+    }
+
+    /* Desktop Styles */
+    @media (min-width: 768px) {
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+      }
+      .button {
+        width: 5%;
+      }
+    }
+
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 5px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+ 
+}
+
+th {
+  background-color: none;
+}
+.staking-system {
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 0px;
+  background-color: #f8f8f8;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  justify-content: center;
+}
+
+.row {
+  margin-bottom: 10px;
+}
+
+.column p {
+  margin: 0;
+  padding: 0;
+}
+
+.column h3, .column p {
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+<section id="my-section" class="top-nav">
+  <div>
+    <div class="logo-container">
+     <a href="./"> <img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230702_135707.png" alt="Your Logo"></a>
+      <h2>SWIFT Inu</h2>
+    </div>
+  </div>
+  <input id="menu-toggle" type="checkbox" />
+  <label class='menu-button-container' for="menu-toggle">
+    <div class='menu-button'></div>
+  </label>
+  <ul class="menu">
+    <li><a href="./">Home</a></li>
+    <li><a href="./welcome">Welcome</a></li>
+    <li><a href="./abstract" onclick="myFunction()">Abstract</a></li>
+
+    <li><a href="./introduction" onclick="myFunction()">Introduction</a></li>
+    <li><a href="./keyfeatures" onclick="myFunction()">Key Features</a></li>
+    <li><a href="./tokenomics" onclick="myFunction()">Tokenomics</a></li>
+    <li><a href="./roadmapdev" onclick="myFunction()">Roadmap and Devs</a></li>
+    <li><a href="./conclusion" onclick="myFunction()">Conclusion</a></li>
+  </ul>
+</section>
+<h1></h1>
+<h1></h1>
+
+
+<h1></h1>
+<div class="landingpage">
+  <h1></h1>
+  <h2>Key Features of SWIFT Inu</h2>
+  <p><b><i>📌SWIFT Inu is a unique cryptocurrency that offers a range of exclusive features designed to benefit its holders.</i></b></p>
+<h1>Staking</h1>
+<div class="image-container">
+  <div class="image-wrapper">
+<img src="https://raw.githubusercontent.com/onchain123/onchain/main/1_sIRzDkBySip4RdiWeWUH_w.jpg"width="100%" height="auto" class="slide-up">
+</div>
+</div>
+<p>SWIFT Inu Staking is a gateway to passive income and financial growth.</p>
+<p>With SWIFT Inu, investors have the opportunity to secure their tokens by locking them into the Swift Bank, where they can enjoy a generous 0.5% interest rate over a 360-day term.</p>
+<p>This means that stakers can earn a remarkable 180% return on investment (ROI) while their tokens remain safely staked. By participating in SWIFT Inu Staking, users can effortlessly grow their wealth and maximize the potential of their SWIFT tokens.
+</p>
+<p>
+  <b>
+    <i>
+      ⚠Disclaimer: The 180% ROI offered through SWIFT Inu Staking is based on the tokens being locked. However, please be aware that the market value of the staked tokens may fluctuate, and we have no control over these changes. Consider the potential risks and make informed decisions accordingly. 
+    </i>
+  </b>
+</p>
+<h3>Table of Staking ROI Calculator</h3>
+<section class="slide-up">
+  <div class="table-container">
+<table>
+  <tr>
+    <th>Daily Interest Rate</th>
+    <th>Staked Tokens</th>
+    <th>ROI</th>
+    <th>Earnings</th>
+    <th>Total</th>
+  </tr>
+  <tr>
+    <td>0.5%</td>
+    <td>1,000,000 SWIFT</td>
+    <td>180%</td>
+    <td>1,800,000 SWIFT</td>
+    <td>2,800,000 SWIFT</td>
+  </tr>
+</table>
+</div>
+</section>
+<p>
+  
+The table above showcases the calculation of Return on Investment (ROI) based on a 360-day locked period and a daily interest rate of 0.5%. It outlines the potential earnings that stakers can expect to accumulate over the specified timeframe. 
+  
+</p>
+<h3>How to Stake?</h3>
+<p>
+Stakers begin by connecting their wallets to the Swift Bank Staking dapp. Once connected, they can deposit their $SWIFT tokens into the staking platform and select a lock duration that suits their preference.
+
+During the staking period, stakers will accrue daily rewards with an interest rate of 0.5%. These rewards are calculated based on the number of tokens staked and the length of the lock period.</p><p> Stakers have the flexibility to withdraw their reward tokens on a daily basis, allowing them to access their earnings regularly.
+</p>
+
+
+<div class="slide-up">
+  <div class="staking-system">
+    <div class="row">
+      <div class="column">
+        <h3>Staking System</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <p>User</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <p>⬇️</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <p>Connect Wallet to Swift Bank</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <p>⬇️</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <p>Deposit Tokens</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <p>⬇️</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <p>Staking Pools</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <p>⬇️</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <p>Staking Rewards and Payouts</p>
+        <p>(0.5% interest daily, 180% ROI for 365 days)</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <p>⬇️</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <p>Unstaking and Withdrawals</p>
+      </div>
+    </div>
+  </div>
+  </div>
+  <p class="slide-up"><b><i>📌Bellow is a simple Flow chart of Swift Bank on how Staking Work</i></b></p>
+  <h1></h1>
+<div class="image-container">
+  <div class="image-wrapper">
+<img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230705_134834.jpg"width="100%" height="auto" class="slide-up">
+</div>
+</div>
+<p class="slide-up">
+  <b>
+    <i>
+⚠️ Attention❗:
+Locked tokens on Swift Bank cannot be withdrawn prematurely. However, you can withdraw your 0.5% daily interest earnings on a daily basis. Please consider this before participating in the staking program.
+    </i>
+  </b>
+</p>
+
+<h1>Reflections</h1>
+<div class="image-container">
+  <div class="image-wrapper">
+<img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230705_230411.jpg"width="100%" height="auto" class="slide-up">
+</div>
+</div>
+<p>
+Reflections on SWIFT Inu work by implementing a 10% tax on all buy and sell transactions of SWIFT Inu tokens. This tax is then divided into two parts: 6% is allocated for reflections and 4% is distributed to the staking pool.</p>
+  
+<p>
+The 6% allocated for reflections is distributed among token holders. Holders of SWIFT Inu tokens passively earn reflections on every transaction, regardless of whether they are buying or selling. The amount of reflections received is proportional to the size of their SWIFT holdings. </p>
+  
+<p>In other words, the larger the amount of SWIFT tokens held, the greater the reflections earned. This mechanism incentivizes token holders to accumulate more SWIFT tokens, as it directly impacts their potential earnings from reflections.</p>
+  
+<p>
+
+The remaining 4% of the tax is directed to the staking pool. This pool serves as a reward mechanism for participants who choose to lock their SWIFT Inu tokens and participate in the staking program.</p>
+  
+<p> By locking their tokens in the staking pool, holders not only contribute to the stability and liquidity of the ecosystem but also increase their chances of receiving a larger portion of the 4% distributed to stakers.
+</p>
+
+
+<div class="image-container">
+  <div class="image-wrapper">
+<img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230705_113117.jpg"width="100%" height="auto" class="slide-up">
+</div>
+</div>
+<p class="slide-up"><b><i>📌The larger the amount of SWIFT tokens held, the greater the reflections earned.</i></b></p>
+<h1>NFT Mining</h1>
+<div class="image-container">
+  <div class="image-wrapper">
+<img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230705_181550.jpg"width="100%" height="auto" class="slide-up">
+</div>
+</div>
+<p>
+In the SWIFT ecosystem, NFT Mining refers to a process that allows users to earn passive income through the yield of NFT Collectibles. </p>
+  
+<p>Although the term "mining" may be misleading, it is used metaphorically rather than referring to traditional cryptocurrency mining.</p>
+  
+<p>
+
+When users hold NFTs in their wallets, such as Metamask or Swifter Wallet, they are eligible to receive tokens as a reward. These tokens are generated and distributed directly to the wallet of the NFT holder, without the need for manual claiming.</p>
+  
+<p>
+The uniqueness of this mechanism lies in its decentralized nature. SWIFT aims to maximize decentralization, and therefore, tasks or actions required to claim tokens are not part of our goal. </p>
+  
+<p>NFT holders can simply hold their NFTs in their wallets and passively earn tokens on a daily basis.</p>
+<p>
+This passive income model provides an opportunity for NFT holders to benefit from their holdings without active participation in additional tasks or processes.</p>
+  
+<p> By embracing this approach, SWIFT allows users to enjoy the rewards of their NFT ownership while prioritizing decentralization and simplicity in token distribution.
+</p>
+<div class="image-container">
+  <div class="image-wrapper">
+<img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230705_151045.png"width="100%" height="auto" class="slide-up">
+</div>
+</div>
+<p>
+NFT Mining, despite its name, does not involve traditional mining activities. Instead, it is a simplified process facilitated by three smart contracts. Allow me to explain how this process works.
+</p>
+  
+<p>
+The first smart contract involved is the Airdrop Smart Contract. Its purpose is to distribute tokens to NFT holders. To initiate this distribution, a script is employed to automatically call the Airdrop Smart Contract.
+</p>
+  
+<p>
+Once the Airdrop Smart Contract is called by the script, it proceeds to invoke the mint function from the Token Smart Contract. The Token Smart Contract plays a crucial role in this process. It retrieves all the addresses of NFT holders from the NFT Smart Contract.
+</p>
+  
+<p>
+After gathering the addresses of NFT holders, the Token Smart Contract then proceeds to mint tokens. The minted tokens are then distributed through the Airdrop Smart Contract. This distribution mechanism ensures that the tokens reach the rightful NFT holders.
+</p>
+  
+<p>
+It is important to note that this entire process occurs automatically, without the need for users to claim their tokens actively. The tokens are minted and distributed to NFT holders seamlessly, simplifying the process and eliminating the requirement for manual actions.
+</p>
+  
+<p>
+ The term "NFT Mining" in this context refers to a process that involves the automatic distribution of tokens to NFT holders.</p>
+   
+ <p> Through the interaction of the Airdrop Smart Contract, Token Smart Contract, and NFT Smart Contract, tokens are minted and distributed without the need for users to claim them manually.
+</p>
+<p class="slide-up"><b><i>📌Disclaimer: The Reward tokens distributed to NFT holders are separate from SWIFT Inu. However, SWIFT Inu will be used exclusively for NFT Miner purchases.</i></b></p>
+<h1>
+Decentralized Applications (dApps)
+</h1>
+<div class="image-container">
+  <div class="image-wrapper">
+<img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230705_153813.jpg"width="100%" height="auto" class="slide-up">
+</div>
+</div>
+<p>
+Our primary goal is to create and provide Swift Bank, a decentralized dApp where investors can freely utilize its features without the need for supervision or control from any centralized authority. Swift Bank is designed specifically for staking SWIFT tokens.</p>
+<p>
+Within the Swift Bank ecosystem, investors can stake their SWIFT tokens, contributing to the network's consensus mechanism and supporting its operations. This staking process involves securely locking up a specified amount of SWIFT tokens for a designated period.</p>
+<p>
+By staking their SWIFT tokens in Swift Bank, investors actively participate in securing and maintaining the integrity of the network.</p>
+<p> Additionally, stakers have the potential to earn rewards in the form of additional SWIFT tokens. These rewards are proportionate to the number of tokens staked and the duration of the staking period.</p>
+<p>
+Swift Bank simplifies the staking experience by providing a user-friendly interface. Investors can easily access the platform, choose their staking parameters, and initiate the staking process with ease/p>
+  
+<p>The platform ensures the security of staked tokens and provides transparent information about staking rewards and associated details.</p>
+<p>
+By focusing solely on staking, Swift Bank aims to create a streamlined and efficient platform specifically tailored to investors seeking to actively participate in the network and earn rewards through their SWIFT token holdings.
+</p>
+<h1>Swifter Wallet</h1>
+<div class="image-container">
+  <div class="image-wrapper">
+<img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230705_160240.jpg"width="100%" height="auto" class="slide-up">
+</div>
+</div>
+<p>
+Metamask is undoubtedly a widely recognized and trusted decentralized crypto wallet in the industry.</p>
+  
+<p> However, despite the popularity and dominance of Metamask, we have set our sights on developing our own Swifter Wallet.</p>
+  
+<p> Why? Because we aspire for the SWIFT Inu ecosystem to become one of the largest and most significant ecosystems in the crypto and NFT space.</p>
+<p>
+By creating Swifter Wallet, we aim to provide our community with a dedicated and tailored solution for storing their NFTs and crypto assets. </p>
+<p>Offering our own wallet within the SWIFT Inu ecosystem allows us to cultivate a sense of community ownership and reinforce the cohesion of our ecosystem.
+</p>
+  
+<p>
+Swifter Wallet will serve as a secure and user-friendly storage solution where community members can store their NFT collectibles and various cryptocurrencies. By utilizing our wallet, users can have a seamless experience within the SWIFT Inu ecosystem, accessing and managing their assets with ease.</p>
+  
+<p>
+Furthermore, Swifter Wallet will be designed to integrate seamlessly with other SWIFT Inu ecosystem components, such as our dApp, staking mechanisms, and NFT marketplace. This integration will enable users to effortlessly engage with the various features and functionalities of our ecosystem, fostering a unified and convenient experience.</p>
+<p>
+Our vision for Swifter Wallet is to provide a reliable and trustworthy storage solution that aligns with the decentralized principles of the crypto space.</p>
+<p> We strive to establish a strong ecosystem where our community can confidently choose to store their valuable NFTs and crypto assets, knowing that Swifter Wallet is built to cater to their specific needs within the SWIFT Inu ecosystem.
+</p>
+<p class="slide-up"><b><i>📌 We will provide a much more detailed details with our Swifter Wallet on our future update.</i></b></p>
+
+  <div class="button-container">
+    <a href="./introduction" class="button">Back</a>
+    <a href="./tokenomics" class="button">Next</a>
+  </div>
+<h1></h1>
+</div>
+
+ 
+<script>
+function isElementInViewport(element) {
+  var rect = element.getBoundingClientRect();
+  var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+  // Check if the element is within the viewport vertically and horizontally
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= windowHeight &&
+    rect.right <= windowWidth
+  );
+}
+
+function addSlideUpAnimation() {
+  var sectionElements = document.getElementsByClassName('slide-up');
+  for (var i = 0; i < sectionElements.length; i++) {
+    var sectionElement = sectionElements[i];
+    if (isElementInViewport(sectionElement)) {
+      sectionElement.classList.add('slide-up-active');
+    }
+  }
+}
+
+// Trigger the slide-up animation on page load
+document.addEventListener('DOMContentLoaded', function() {
+  addSlideUpAnimation();
+});
+
+// Trigger the slide-up animation on scroll
+window.addEventListener('scroll', function() {
+  addSlideUpAnimation();
+});
+
+// Trigger the slide-up animation on window resize
+window.addEventListener('resize', function() {
+  addSlideUpAnimation();
+});
+</script>
+
+
+  <script>
+    const roadmap = document.querySelector('.roadmap');
+    roadmap.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      roadmap.scrollLeft += e.deltaY;
+    });
+  </script>
+  <script src="script.js"></script> 
+  <script>
+const slides = document.querySelectorAll(".slides img");
+let currentIndex = 0;
+
+function showSlides() {
+  slides[currentIndex].classList.add("slide-hidden");
+  currentIndex = (currentIndex + 1) % slides.length;
+  slides[currentIndex].classList.remove("slide-hidden");
+}
+
+setInterval(showSlides, 1000); // Change image every 3 seconds (adjust as needed)
+
+  </script>
+<div style="display: flex; justify-content: center;">
+  <p style="font-size: 8px;" class="pogi-criptotradeir">⚠️DISCLAIMER: SWIFT Inu is not a financial institution nor investment.SWIFT Inu is a decentralized token owned by the community and run by the community..
+  Investing in crypto is very highrisk which can lead to losses. invest at your own risk! </p>
+  </div>
+<div style="display: flex; justify-content: center;">
+  <p style="font-size: 8px;" class="pogi-criptotradeir">&copy; 2023 SWIFT Inu. All rights reserved.</p>
+  </div>
+</body>
+</html>
