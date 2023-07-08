@@ -1193,11 +1193,101 @@ font-family: Arial,Sans-Serif;
   transform: translateY(0);
 }
      
+#loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #252954;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    
+    #loading img {
+      width: 100px; /* Adjust the size as needed */
+      height: auto;
+    }
+
+.slide-exit-animation {
+  transition: transform 0.5s ease-out; /* Customize the duration and easing as needed */
+}
+
+.slide-exit-animation.slide-exit {
+  transform: translateX(-100%); /* Customize the direction and distance of the slide exit */
+}
+
+.slide-exit-animation {
+  transition: transform 0.5s ease-out; /* Customize the duration and easing as needed */
+}
+
+#loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo-container {
+  position: relative;
+  margin-bottom: 10px; /* Adjust the spacing between the logo and the loading bar as needed */
+}
+
+#logo {
+  width: 100px; /* Adjust the size of the logo image as needed */
+  height: 100px;
+}
+/* Define the bouncing animation */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Apply the animation to the logo */
+        #logo {
+            animation: bounce 1s infinite;
+        }
+
+
+#loading-bar {
+  width: 0;
+  height: 10px; /* Adjust the height of the loading bar as needed */
+  background-color: orange; /* Customize the color of the loading bar */
+  animation: loading-animation 20s linear infinite; /* Customize the animation duration and timing as needed */
+}
+
+@keyframes loading-animation {
+  0% {
+    width: 0;
+  }
+  30% {
+    width: 30%;
+  }
+}
+
+     
+     
     </style>
   </head>
   
   
   <body>
+<div id="loading" class="slide-exit-animation">
+  <div id="logo-container">
+    <img src="https://raw.githubusercontent.com/onchain123/onchain/main/20230702_135707.png" alt="Your Logo" id="logo">
+  </div>
+  <div id="loading-bar"></div>
+</div>
+    
 <section id="my-section" class="top-nav">
   <div>
     <div class="logo-container">
@@ -1823,6 +1913,17 @@ style="font-weight: bold; color: blue;">Click Here</p></a>
         </div>
       </div>
 
+<script>
+    setTimeout(function() {
+  var loadingElement = document.getElementById('loading');
+  loadingElement.classList.add('slide-exit');
+  
+  setTimeout(function() {
+    loadingElement.style.display = 'none';
+  }, 500); // Wait for the animation duration before hiding the element (adjust the delay if needed)
+}, 6000);
+
+  </script>
 
     
 <script>
